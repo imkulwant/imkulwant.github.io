@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kulwant Singh | Backend Engineer Portfolio</title>
+<meta name="description" content="Kulwant Singh — senior backend engineer in Stockholm building resilient distributed systems with Java, Kotlin and Spring Boot. Exploring AI/LLM engineering.">
+<meta property="og:title" content="Kulwant Singh | Backend Engineer Portfolio">
+<meta property="og:description" content="Distributed systems, microservices and JVM platforms. Projects, repositories and what I'm exploring next.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://imkulwant.github.io/">
+<link rel="canonical" href="https://imkulwant.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e6f2ff'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' font-weight='700' text-anchor='middle' fill='%230080ff'%3EKS%3C/text%3E%3C/svg%3E">
+<style>
+  /* ---------- Theme (light, blue primary) ---------- */
+  :root {
+    --background: #ffffff;
+    --foreground: #020817;
+    --card: #ffffff;
+    --primary: #0080ff;
+    --primary-hover: #0070e0;
+    --primary-foreground: #f8fafc;
+    --bright-blue: #0088ff;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --border: #e2e8f0;
+    --radius: 0.5rem;
+    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+    --sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid var(--border); }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--sans);
+    line-height: 1.5;
+    background: var(--background);
+    color: var(--foreground);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; cursor: pointer; }
+  svg.icon { display: inline-block; flex-shrink: 0; }
+
+  .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
+  @media (min-width: 640px) { .container { padding: 0 2rem; } }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 0;
+    background: rgba(255,255,255,0.75);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .site-header .container { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+
+  .brand { display: flex; align-items: center; gap: 0.625rem; }
+  .monogram {
+    width: 2rem; height: 2rem; border-radius: var(--radius);
+    background: rgba(0,128,255,0.1); color: var(--primary);
+    border: 1px solid rgba(0,128,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-weight: 700; font-size: 12px; letter-spacing: 0.05em;
+    transition: all 0.15s;
+  }
+  .brand:hover .monogram { background: var(--primary); color: var(--primary-foreground); }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
+  .brand-name { font-size: 14px; font-weight: 600; letter-spacing: -0.015em; transition: color 0.15s; }
+  .brand:hover .brand-name { color: var(--primary); }
+  .brand-role { font-size: 11px; font-weight: 500; color: var(--muted-foreground); }
+  @media (min-width: 640px) { .brand-name { font-size: 16px; } .brand-role { font-size: 12px; } }
+
+  .nav-pill {
+    display: none; align-items: center; gap: 0.25rem;
+    background: rgba(241,245,249,0.5); padding: 0.25rem;
+    border-radius: 9999px; border: 1px solid rgba(226,232,240,0.6);
+    font-size: 12px; font-weight: 500; color: var(--muted-foreground);
+  }
+  @media (min-width: 768px) { .nav-pill { display: flex; } }
+  .nav-pill a {
+    display: flex; align-items: center; gap: 0.375rem;
+    padding: 0.25rem 0.75rem; border-radius: 9999px; transition: all 0.15s;
+  }
+  .nav-pill a:hover { color: var(--foreground); background: rgba(255,255,255,0.8); }
+  .nav-pill svg { color: var(--primary); }
+
+  .header-actions { display: flex; align-items: center; gap: 0.5rem; }
+  @media (min-width: 640px) { .header-actions { gap: 0.625rem; } }
+  .btn-sm {
+    display: flex; align-items: center; gap: 0.375rem;
+    padding: 0.375rem 0.75rem; border-radius: var(--radius);
+    font-size: 12px; font-weight: 500; box-shadow: var(--shadow-sm);
+    transition: background 0.15s;
+  }
+  .btn-sm.outline { border: 1px solid var(--border); }
+  .btn-sm.outline:hover { background: var(--muted); }
+  .btn-sm.outline svg { color: var(--primary); }
+  .btn-sm.dark { background: var(--foreground); color: var(--background); }
+  .btn-sm.dark:hover { background: rgba(2,8,23,0.9); }
+  .hide-xs { display: none; }
+  @media (min-width: 640px) { .hide-xs { display: inline; } }
+
+  /* ---------- Hero ---------- */
+  main { flex: 1; padding: 3rem 0; }
+  .hero { max-width: 48rem; margin: 0 auto 3rem; text-align: center; }
+  .badge-hero {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.25rem 0.75rem; border-radius: 9999px;
+    font-size: 12px; font-weight: 500;
+    background: rgba(0,128,255,0.1); color: var(--primary);
+    border: 1px solid rgba(0,128,255,0.2);
+    margin-bottom: 1rem;
+  }
+  .hero h1 { font-size: 36px; line-height: 40px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 1rem; }
+  @media (min-width: 640px) { .hero h1 { font-size: 48px; line-height: 1; } }
+  .hero-bio { font-size: 15px; color: var(--muted-foreground); max-width: 40rem; margin: 0 auto 1.25rem; line-height: 1.65; }
+  .stack-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.375rem; margin-bottom: 1.5rem; }
+  .chip {
+    display: inline-flex; align-items: center; border-radius: 9999px;
+    border: 1px solid var(--border); padding: 0.125rem 0.625rem;
+    font-size: 12px; font-weight: 600; color: var(--foreground); background: var(--card);
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.75rem; }
+  .btn-pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 1rem; border-radius: 9999px;
+    font-size: 14px; font-weight: 600; transition: all 0.15s;
+  }
+  .btn-pill.primary { background: var(--primary); color: #fff; box-shadow: var(--shadow-sm); }
+  .btn-pill.primary:hover { background: var(--primary-hover); }
+  .btn-pill.outline { border: 1px solid var(--border); background: var(--card); }
+  .btn-pill.outline:hover { background: var(--muted); }
+
+  /* ---------- Sections ---------- */
+  .section { scroll-margin-top: 5rem; padding-bottom: 3rem; }
+  .section-head { text-align: center; margin-bottom: 2rem; }
+  .section-head h2 { font-size: 24px; line-height: 32px; font-weight: 700; }
+  .section-head p { font-size: 14px; color: var(--muted-foreground); margin-top: 0.25rem; }
+  .blue { color: var(--bright-blue); }
+
+  .grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; grid-auto-rows: 1fr; }
+  .repo-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  @media (min-width: 640px) { .grid, .repo-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .grid, .repo-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  /* ---------- Cards ---------- */
+  .card {
+    border-radius: var(--radius); border: 1px solid var(--border);
+    background: var(--card); box-shadow: var(--shadow-sm);
+    display: flex; flex-direction: column; justify-content: space-between;
+    height: 100%; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+  .card.featured { border-color: rgba(0,128,255,0.5); box-shadow: 0 0 0 1px rgba(0,128,255,0.2), var(--shadow-sm); }
+  .card.featured:hover { box-shadow: 0 0 0 1px rgba(0,128,255,0.2), 0 10px 20px rgba(0,0,0,0.1); }
+
+  .card-head { padding: 1.5rem 1.5rem 0.5rem; display: flex; flex-direction: column; gap: 0.375rem; }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.25rem; }
+  .card-top svg { color: var(--muted-foreground); }
+  .card.featured .card-top svg { color: var(--primary); }
+  .tag {
+    display: inline-flex; align-items: center; border-radius: 9999px;
+    border: 1px solid var(--border); font-size: 10px; font-weight: 600;
+    padding: 0.125rem 0.5rem; color: var(--foreground); white-space: nowrap;
+  }
+  .tag.solid { background: var(--primary); color: var(--primary-foreground); border-color: transparent; }
+  .card h3 { font-size: 16px; line-height: 1.375; font-weight: 600; letter-spacing: -0.015em; }
+  .card-body { padding: 0 1.5rem 0.75rem; }
+  .card-body p {
+    font-size: 12px; line-height: 1.625; color: var(--muted-foreground);
+    overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
+  }
+  .card-foot { padding: 0 1rem 1rem; }
+  .card-link {
+    display: flex; align-items: center; justify-content: center; gap: 0.375rem;
+    padding: 0.5rem 0.75rem; border-radius: calc(var(--radius) - 2px);
+    font-size: 12px; font-weight: 500; transition: background 0.15s;
+    border: 1px solid rgba(0,128,255,0.2); color: var(--primary);
+  }
+  .card-link:hover { background: rgba(0,128,255,0.05); }
+  .card-link.solid { background: var(--primary); color: #fff; border-color: var(--primary); font-weight: 600; box-shadow: var(--shadow-sm); }
+  .card-link.solid:hover { background: var(--primary-hover); }
+
+  /* Exploring card spans the full row */
+  .explore-card { max-width: 56rem; margin: 0 auto; }
+  .explore-card .card-body p { -webkit-line-clamp: unset; font-size: 14px; }
+  .explore-card .chips-row { display: flex; flex-wrap: wrap; gap: 0.375rem; padding: 0 1.5rem 1.5rem; }
+
+  /* ---------- Repository cards ---------- */
+  .filter-wrap { display: flex; justify-content: center; margin-bottom: 2rem; }
+  .filter {
+    display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center;
+    background: #f3f4f6; border-radius: 9999px; padding: 0.25rem; box-shadow: var(--shadow-sm);
+  }
+  .filter button {
+    padding: 0.5rem 1.25rem; border-radius: 9999px; font-weight: 500; font-size: 14px;
+    color: #4b5563; transition: background 0.15s, color 0.15s;
+  }
+  .filter button.active { background: var(--bright-blue); color: #fff; }
+  .filter button:not(.active):hover { color: var(--foreground); }
+
+  .repo-cover {
+    height: 12rem; position: relative; overflow: hidden; background: var(--muted);
+    display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .repo-cover .cover-name {
+    position: relative; font-family: var(--mono); font-weight: 700; font-size: 20px;
+    color: #fff; text-align: center; word-break: break-word; text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  }
+  .repo-cover .cover-bar {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.375rem 0.75rem; background: rgba(0,0,0,0.5); color: #fff; font-size: 12px;
+  }
+  .repo-card .card-head h3 { font-size: 18px; line-height: 28px; }
+  .repo-card .card-body { padding: 0 1.5rem 1.5rem; }
+  .repo-card .card-body p { font-size: 15px; line-height: 1.5; }
+  .repo-card .tags { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.25rem; }
+  .repo-card .tags .tag { font-size: 12px; padding: 0.125rem 0.625rem; }
+  .btn-details {
+    margin-top: 1rem; width: 100%; height: 2.25rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    border: 1px solid var(--border); border-radius: calc(var(--radius) - 2px);
+    font-size: 14px; font-weight: 500; background: var(--background); transition: background 0.15s;
+  }
+  .btn-details:hover { background: var(--muted); }
+  .repo-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.5rem 1.5rem 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem;
+  }
+  .repo-stats { display: flex; align-items: center; gap: 1rem; }
+  .repo-stats span { display: flex; align-items: center; gap: 0.25rem; font-size: 14px; color: var(--muted-foreground); }
+  .repo-view { display: flex; align-items: center; gap: 0.25rem; font-size: 14px; font-weight: 500; color: var(--primary); }
+  .repo-view:hover { text-decoration: underline; }
+  .repo-status { text-align: center; color: var(--muted-foreground); font-size: 14px; grid-column: 1 / -1; padding: 2rem 0; }
+  .repo-status a { color: var(--primary); font-weight: 500; }
+  .repo-status a:hover { text-decoration: underline; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 0; }
+  footer .container { text-align: center; font-size: 14px; color: var(--muted-foreground); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="#" class="brand">
+      <div class="monogram">KS</div>
+      <div class="brand-text">
+        <span class="brand-name">Kulwant Singh</span>
+        <span class="brand-role">Senior Backend Engineer</span>
+      </div>
+    </a>
+
+    <nav class="nav-pill" aria-label="Sections">
+      <a href="#projects"><svg class="icon" data-icon="grid" width="14" height="14"></svg><span>Projects</span></a>
+      <a href="#exploring"><svg class="icon" data-icon="cpu" width="14" height="14"></svg><span>Exploring</span></a>
+      <a href="#repositories"><svg class="icon" data-icon="folder" width="14" height="14"></svg><span>Repositories</span></a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="cv.pdf" target="_blank" rel="noopener" class="btn-sm outline"><svg class="icon" data-icon="file" width="14" height="14"></svg><span>CV (PDF)</span></a>
+      <a href="https://github.com/imkulwant" target="_blank" rel="noopener" class="btn-sm dark"><svg class="icon" data-icon="github" width="14" height="14"></svg><span class="hide-xs">GitHub</span></a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="badge-hero"><span>⚙️ Backend &amp; Distributed Systems Engineer</span></div>
+      <h1>Kulwant Singh</h1>
+      <p class="hero-bio">
+        10+ years building and scaling resilient distributed systems and microservices,
+        mostly backend, cloud-native and JVM-based. Based in Stockholm, Sweden.
+      </p>
+      <div class="stack-chips">
+        <span class="chip">Java</span>
+        <span class="chip">Kotlin</span>
+        <span class="chip">Spring Boot</span>
+        <span class="chip">JPA / Hibernate</span>
+        <span class="chip">Kafka</span>
+        <span class="chip">Kubernetes</span>
+        <span class="chip">Docker</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">MongoDB</span>
+        <span class="chip">Redis</span>
+      </div>
+      <div class="hero-actions">
+        <a href="https://github.com/imkulwant" target="_blank" rel="noopener" class="btn-pill primary"><span>🐙 GitHub Profile</span></a>
+        <a href="https://linkedin.com/in/imkulwant" target="_blank" rel="noopener" class="btn-pill outline"><span>💼 LinkedIn</span></a>
+        <a href="cv.pdf" target="_blank" rel="noopener" class="btn-pill outline"><span>📄 View CV / Resume</span></a>
+      </div>
+    </div>
+
+    <!-- Featured projects -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <h2><span class="blue">Featured</span> Backend Projects</h2>
+        <p>Distributed systems, microservices and developer tooling on the JVM</p>
+      </div>
+
+      <div class="grid">
+        <div class="card featured">
+          <div>
+            <div class="card-head">
+              <div class="card-top">
+                <svg class="icon" data-icon="server" width="20" height="20"></svg>
+                <span class="tag solid">Payments · Kafka</span>
+              </div>
+              <h3>payment-system</h3>
+            </div>
+            <div class="card-body">
+              <p>Event-driven payment processing system using Kafka and MySQL, implementing the authorize-then-capture pattern.</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="https://github.com/imkulwant/payment-system" target="_blank" rel="noopener" class="card-link solid"><svg class="icon" data-icon="github" width="14" height="14"></svg>View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-head">
+              <div class="card-top">
+                <svg class="icon" data-icon="server" width="18" height="18"></svg>
+                <span class="tag">Java · Gateway</span>
+              </div>
+              <h3>api-gateway</h3>
+            </div>
+            <div class="card-body">
+              <p>Spring Cloud Gateway service with Redis-based rate limiting, Resilience4j circuit breaking and distributed tracing via OpenTelemetry.</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="https://github.com/imkulwant/api-gateway" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-head">
+              <div class="card-top">
+                <svg class="icon" data-icon="server" width="18" height="18"></svg>
+                <span class="tag">Kotlin · Service</span>
+              </div>
+              <h3>url-shortener</h3>
+            </div>
+            <div class="card-body">
+              <p>Distributed URL shortener that turns long URLs into encrypted short codes, built with Spring Boot, MongoDB and Redis.</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="https://github.com/imkulwant/url-shortener" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-head">
+              <div class="card-top">
+                <svg class="icon" data-icon="server" width="18" height="18"></svg>
+                <span class="tag">Java · Microservice</span>
+              </div>
+              <h3>wallet-service</h3>
+            </div>
+            <div class="card-body">
+              <p>Spring Boot microservice for player wallets, covering authentication, balance, credit/debit operations and transaction history.</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="https://github.com/imkulwant/wallet-service" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-head">
+              <div class="card-top">
+                <svg class="icon" data-icon="box" width="18" height="18"></svg>
+                <span class="tag">Java · Library</span>
+              </div>
+              <h3>crudify</h3>
+            </div>
+            <div class="card-body">
+              <p>Library that generates CRUD REST APIs for Spring Boot. Annotate a JPA entity with @CrudifyEntity and the endpoints are ready.</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="https://github.com/imkulwant/crudify" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-head">
+              <div class="card-top">
+                <svg class="icon" data-icon="layers" width="18" height="18"></svg>
+                <span class="tag">Infra · Docker</span>
+              </div>
+              <h3>homelab-platform</h3>
+            </div>
+            <div class="card-body">
+              <p>Self-hosted infrastructure platform running Nginx, Prometheus, Grafana, MySQL, Redis and Portainer, orchestrated with Docker Compose.</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="https://github.com/imkulwant/homelab-platform" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI / LLM -->
+    <section id="exploring" class="section">
+      <div class="section-head">
+        <h2><span class="blue">Currently</span> Exploring</h2>
+        <p>Where I'm heading next, alongside backend work</p>
+      </div>
+      <div class="card featured explore-card">
+        <div class="card-head">
+          <div class="card-top">
+            <svg class="icon" data-icon="cpu" width="20" height="20"></svg>
+            <span class="tag solid">In progress</span>
+          </div>
+          <h3>AI / LLM Engineering</h3>
+        </div>
+        <div class="card-body">
+          <p>A self-directed path into AI and LLM engineering: learning model fundamentals hands-on, building agent tooling, and bringing the reliability habits of distributed backend systems to LLM-powered applications. Projects will appear here as they ship.</p>
+        </div>
+        <div class="chips-row">
+          <span class="chip">PyTorch</span>
+          <span class="chip">LLM agents</span>
+          <span class="chip">Prompt engineering</span>
+          <span class="chip">Python</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Repositories (loaded live from the GitHub API) -->
+    <section id="repositories" class="section">
+      <div class="section-head">
+        <h2><span class="blue">Public</span> Repositories</h2>
+        <p>Pulled live from GitHub</p>
+      </div>
+      <div class="filter-wrap"><div class="filter" id="repo-filter" hidden></div></div>
+      <div class="repo-grid" id="repo-grid">
+        <div class="repo-status">Loading repositories…</div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year">2026</span> Kulwant Singh. Built with HTML &amp; CSS · Hosted on GitHub Pages.</p>
+  </div>
+</footer>
+
+<script>
+  // ---------- Icons (Lucide, ISC licence) ----------
+  const ICONS = {
+    grid: '<rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>',
+    folder: '<path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/><circle cx="12" cy="13" r="2"/><path d="M14 13h3"/><path d="M7 13h3"/>',
+    file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+    github: '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-5-2"/>',
+    external: '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+    server: '<rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/>',
+    box: '<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 7.7 4.73a2 2 0 0 0 2 0L20.7 7"/>',
+    layers: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
+    cpu: '<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>',
+    star: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+    fork: '<circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/>',
+    eye: '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
+    info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>'
+  };
+  function icon(name, size) {
+    return '<svg class="icon" width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>';
+  }
+  function hydrateIcons(root) {
+    root.querySelectorAll('svg[data-icon]').forEach(function (el) {
+      el.setAttribute('viewBox', '0 0 24 24');
+      el.setAttribute('fill', 'none');
+      el.setAttribute('stroke', 'currentColor');
+      el.setAttribute('stroke-width', '2');
+      el.setAttribute('stroke-linecap', 'round');
+      el.setAttribute('stroke-linejoin', 'round');
+      el.setAttribute('aria-hidden', 'true');
+      el.innerHTML = ICONS[el.dataset.icon] || '';
+    });
+  }
+  hydrateIcons(document);
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- Repositories ----------
+  const USER = 'imkulwant';
+  const SKIP = [USER.toLowerCase(), (USER + '.github.io').toLowerCase()];
+  const grid = document.getElementById('repo-grid');
+  const filter = document.getElementById('repo-filter');
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function cover(name) {
+    let h = 0;
+    for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360;
+    const hue = 198 + (h % 18); // stay in the blue family
+    return 'background: linear-gradient(135deg, hsl(' + hue + ' 95% 52%), hsl(' + (hue + 12) + ' 90% 38%));';
+  }
+  function updated(iso) {
+    return new Date(iso).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+  }
+  function card(r) {
+    const tags = [r.language].concat((r.topics || []).slice(0, 2)).filter(Boolean);
+    return '<div class="card repo-card">' +
+      '<div class="repo-cover" style="' + cover(r.name) + '">' +
+        '<span class="cover-name">' + esc(r.name) + '</span>' +
+        '<div class="cover-bar"><span>' + esc(r.language || 'Code') + '</span><span>Updated ' + updated(r.pushed_at) + '</span></div>' +
+      '</div>' +
+      '<div>' +
+        '<div class="card-head"><h3>' + esc(r.name) + '</h3>' +
+          (tags.length ? '<div class="tags">' + tags.map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</div>' : '') +
+        '</div>' +
+        '<div class="card-body">' +
+          '<p>' + esc(r.description || 'No description yet.') + '</p>' +
+          '<a class="btn-details" href="' + esc(r.html_url) + '#readme" target="_blank" rel="noopener">' + icon('info', 16) + 'View Details</a>' +
+        '</div>' +
+      '</div>' +
+      '<div class="repo-foot">' +
+        '<div class="repo-stats"><span>' + icon('star', 16) + r.stargazers_count + '</span><span>' + icon('fork', 16) + r.forks_count + '</span></div>' +
+        '<a class="repo-view" href="' + esc(r.html_url) + '" target="_blank" rel="noopener">' + icon('eye', 16) + '<span>View</span></a>' +
+      '</div>' +
+    '</div>';
+  }
+  function render(repos, lang) {
+    const list = lang === 'All' ? repos : repos.filter(function (r) { return r.language === lang; });
+    grid.innerHTML = list.map(card).join('');
+  }
+  function fail() {
+    grid.innerHTML = '<div class="repo-status">Couldn\'t load repositories right now. <a href="https://github.com/' + USER + '?tab=repositories" target="_blank" rel="noopener">Browse them on GitHub →</a></div>';
+  }
+
+  fetch('https://api.github.com/users/' + USER + '/repos?per_page=100&sort=pushed', { headers: { Accept: 'application/vnd.github+json' } })
+    .then(function (res) { if (!res.ok) throw new Error(res.status); return res.json(); })
+    .then(function (data) {
+      const repos = data
+        .filter(function (r) { return !r.fork && !r.archived && SKIP.indexOf(r.name.toLowerCase()) === -1; })
+        .sort(function (a, b) { return b.stargazers_count - a.stargazers_count || new Date(b.pushed_at) - new Date(a.pushed_at); });
+      if (!repos.length) return fail();
+
+      const counts = {};
+      repos.forEach(function (r) { if (r.language) counts[r.language] = (counts[r.language] || 0) + 1; });
+      const langs = ['All'].concat(Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).slice(0, 4));
+      filter.innerHTML = langs.map(function (l, i) {
+        return '<button type="button" data-lang="' + esc(l) + '"' + (i === 0 ? ' class="active"' : '') + '>' + esc(l) + '</button>';
+      }).join('');
+      filter.hidden = false;
+      filter.addEventListener('click', function (e) {
+        const b = e.target.closest('button');
+        if (!b) return;
+        filter.querySelectorAll('button').forEach(function (x) { x.classList.toggle('active', x === b); });
+        render(repos, b.dataset.lang);
+      });
+      render(repos, 'All');
+    })
+    .catch(fail);
+</script>
+</body>
+</html>
