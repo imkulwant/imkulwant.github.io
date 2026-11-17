@@ -119,6 +119,12 @@
   }
   .hero h1 { font-size: 36px; line-height: 40px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 1rem; }
   @media (min-width: 640px) { .hero h1 { font-size: 48px; line-height: 1; } }
+  .location {
+    display: inline-flex; align-items: center; gap: 0.375rem;
+    font-size: 14px; font-weight: 600; color: var(--foreground);
+    margin-bottom: 1rem;
+  }
+  .location svg { color: var(--primary); }
   .hero-bio { font-size: 15px; color: var(--muted-foreground); max-width: 40rem; margin: 0 auto 1.25rem; line-height: 1.65; }
   .stack-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.375rem; margin-bottom: 1.5rem; }
   .chip {
@@ -280,21 +286,18 @@
     <div class="hero">
       <div class="badge-hero"><span>⚙️ Backend &amp; Distributed Systems Engineer</span></div>
       <h1>Kulwant Singh</h1>
+      <div class="location"><svg class="icon" data-icon="pin" width="16" height="16"></svg><span>Stockholm, Sweden</span></div>
       <p class="hero-bio">
         10+ years building and scaling resilient distributed systems and microservices,
-        mostly backend, cloud-native and JVM-based. Based in Stockholm, Sweden.
+        mostly backend, cloud-native and JVM-based.
       </p>
       <div class="stack-chips">
         <span class="chip">Java</span>
         <span class="chip">Kotlin</span>
         <span class="chip">Spring Boot</span>
-        <span class="chip">JPA / Hibernate</span>
         <span class="chip">Kafka</span>
         <span class="chip">Kubernetes</span>
-        <span class="chip">Docker</span>
-        <span class="chip">MySQL</span>
-        <span class="chip">MongoDB</span>
-        <span class="chip">Redis</span>
+        <span class="chip">Distributed Systems</span>
       </div>
       <div class="hero-actions">
         <a href="https://github.com/imkulwant" target="_blank" rel="noopener" class="btn-pill primary"><span>🐙 GitHub Profile</span></a>
@@ -306,11 +309,29 @@
     <!-- Featured projects -->
     <section id="projects" class="section">
       <div class="section-head">
-        <h2><span class="blue">Featured</span> Backend Projects</h2>
-        <p>Distributed systems, microservices and developer tooling on the JVM</p>
+        <h2><span class="blue">Featured</span> Projects</h2>
+        <p>Distributed systems, developer tooling and full-stack apps</p>
       </div>
 
       <div class="grid">
+        <div class="card">
+          <div>
+            <div class="card-head">
+              <div class="card-top">
+                <svg class="icon" data-icon="box" width="18" height="18"></svg>
+                <span class="tag">TypeScript · PWA</span>
+              </div>
+              <h3>workout-tracker-pwa</h3>
+            </div>
+            <div class="card-body">
+              <p>Offline-first workout logger for iPhone, built as a React, TypeScript and Vite PWA with Dexie (IndexedDB) storage. No server and no account.</p>
+            </div>
+          </div>
+          <div class="card-foot">
+            <a href="https://github.com/imkulwant/workout-tracker-pwa" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
+          </div>
+        </div>
+
         <div class="card featured">
           <div>
             <div class="card-head">
@@ -483,6 +504,7 @@
     star: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
     fork: '<circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/>',
     eye: '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
+    pin: '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
     info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>'
   };
   function icon(name, size) {
