@@ -125,11 +125,16 @@
     backdrop-filter: saturate(180%) blur(12px);
     border-bottom: 1px solid var(--line);
   }
-  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .brand { display: flex; flex-direction: column; gap: 2px; line-height: 1.2; }
-  .brand-name { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
-  .brand-where { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); }
-  .brand-where .i { width: 11px; height: 11px; color: var(--accent); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 60px; }
+  .identity { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .brand { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+  .local {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 12.5px; color: var(--muted); white-space: nowrap;
+  }
+  .local .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
+  .local .clock { display: none; }
+  .local.has-time .clock { display: inline; }
   .top nav { display: flex; align-items: center; gap: 24px; font-size: 14px; color: var(--muted); }
   .top nav a:hover { color: var(--fg); }
   .nav-actions { display: flex; align-items: center; gap: 8px; }
@@ -152,8 +157,20 @@
     :root:not([data-theme="light"]) .theme .sun { display: block; }
     :root:not([data-theme="light"]) .theme .moon { display: none; }
   }
-  @media (max-width: 640px) { .top nav { gap: 12px; } }
-  @media (max-width: 380px) { .top nav a[href="#work"] { display: none; } }
+  @media (max-width: 640px) {
+    .top nav { gap: 12px; }
+    .top nav > a { display: none; }
+    .identity { gap: 10px; }
+    .local .city { order: 1; }
+    .local.has-time .sep, .local.has-time .tz { display: none; }
+  }
+  @media (max-width: 400px) {
+    .brand { font-size: 15px; }
+    .local { font-size: 12px; }
+    .top nav .cv { padding: 0 10px; }
+  }
+  @media (max-width: 354px) { .local .dot { display: none; } }
+  @media (max-width: 342px) { .local.has-time .clock { display: none; } }
 
   /* ---------- Hero ---------- */
   .hero { padding-block: 112px 72px; }
@@ -377,7 +394,6 @@
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <!-- Lucide icons, ISC licence -->
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
   <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-5-2"/></symbol>
   <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
@@ -430,10 +446,16 @@
 
 <header class="top">
   <div class="wrap">
-    <a href="#top" class="brand">
-      <span class="brand-name">Kulwant Singh</span>
-      <span class="brand-where"><svg class="i"><use href="#i-pin"/></svg>Stockholm, Sweden</span>
-    </a>
+    <div class="identity">
+      <a href="#top" class="brand">Kulwant Singh</a>
+      <span class="local" title="Local time in Stockholm">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="city">Stockholm</span>
+        <span class="clock sep" aria-hidden="true">·</span>
+        <time class="clock"></time>
+        <span class="clock tz"></span>
+      </span>
+    </div>
     <nav aria-label="Main">
       <a href="#work">Work</a>
       <a href="#contact">Contact</a>
@@ -690,6 +712,24 @@
     });
     system.addEventListener('change', label);
     label();
+  })();
+
+  // Local time in Stockholm next to the name; without script only the city shows.
+  (function () {
+    var local = document.querySelector('.local');
+    var time = local.querySelector('time');
+    var tz = local.querySelector('.tz');
+    var clock = new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Stockholm' });
+    var zone = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Stockholm', timeZoneName: 'short' });
+    function tick() {
+      var now = new Date();
+      time.textContent = clock.format(now);
+      var part = zone.formatToParts(now).filter(function (p) { return p.type === 'timeZoneName'; })[0];
+      tz.textContent = part ? part.value : '';
+    }
+    tick();
+    local.classList.add('has-time');
+    setInterval(tick, 15000);
   })();
 </script>
 </body>
