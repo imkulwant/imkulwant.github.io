@@ -3,580 +3,694 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kulwant Singh | Backend Engineer Portfolio</title>
-<meta name="description" content="Kulwant Singh — senior backend engineer in Stockholm building resilient distributed systems with Java, Kotlin and Spring Boot. Exploring AI/LLM engineering.">
-<meta property="og:title" content="Kulwant Singh | Backend Engineer Portfolio">
-<meta property="og:description" content="Distributed systems, microservices and JVM platforms. Projects, repositories and what I'm exploring next.">
+<title>Kulwant Singh · Senior Software Engineer</title>
+<meta name="description" content="Kulwant Singh, senior software engineer in Stockholm. 10+ years building backend systems with Java, Kotlin, Spring Boot and Kafka.">
+<meta name="author" content="Kulwant Singh">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Kulwant Singh · Senior Software Engineer">
+<meta property="og:description" content="Backend systems that stay correct under load. Projects, case studies and contact.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://imkulwant.github.io/">
+<meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://imkulwant.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23e6f2ff'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' font-weight='700' text-anchor='middle' fill='%230080ff'%3EKS%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230c0a09'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' font-weight='700' text-anchor='middle' fill='%23ffffff'%3EKS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kulwant Singh",
+  "jobTitle": "Senior Software Engineer",
+  "worksFor": { "@type": "Organization", "name": "FDJ United" },
+  "address": { "@type": "PostalAddress", "addressLocality": "Stockholm", "addressCountry": "SE" },
+  "email": "singh.kulwant@gmx.com",
+  "url": "https://imkulwant.github.io/",
+  "sameAs": ["https://github.com/imkulwant", "https://linkedin.com/in/imkulwant"],
+  "knowsAbout": ["Java", "Kotlin", "Spring Boot", "Kafka", "Kubernetes", "Distributed Systems"]
+}
+</script>
+<script>
+  // Apply a saved theme before first paint; without one, the page follows the system setting.
+  try {
+    var saved = localStorage.getItem('theme');
+    if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+  } catch (e) {}
+</script>
 <style>
-  /* ---------- Theme (light, blue primary) ---------- */
+  /* ---------- Tokens ---------- */
   :root {
-    --background: #ffffff;
-    --foreground: #020817;
+    --bg: #fafaf9;
+    --fg: #0c0a09;
+    --muted: #57534e;
+    --edge: #a8a29e;
+    --line: #e7e5e4;
+    --line-strong: #d6d3d1;
     --card: #ffffff;
-    --primary: #0080ff;
-    --primary-hover: #0070e0;
-    --primary-foreground: #f8fafc;
-    --bright-blue: #0088ff;
-    --muted: #f1f5f9;
-    --muted-foreground: #64748b;
-    --border: #e2e8f0;
-    --radius: 0.5rem;
-    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-    --sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --accent: #0070e0;
+    --accent-soft: #e8f2fd;
+    --accent-fg: #ffffff;
+    --ok: #15803d;
+    --radius: 14px;
+    --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b0b0c;
+      --fg: #f2f2f0;
+      --muted: #a8a29e;
+      --edge: #6f6a65;
+      --line: #232325;
+      --line-strong: #34343a;
+      --card: #121214;
+      --accent: #4da3ff;
+      --accent-soft: rgba(77, 163, 255, 0.12);
+      --accent-fg: #0b0b0c;
+      --ok: #4ade80;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0b0c;
+    --fg: #f2f2f0;
+    --muted: #a8a29e;
+    --edge: #6f6a65;
+    --line: #232325;
+    --line-strong: #34343a;
+    --card: #121214;
+    --accent: #4da3ff;
+    --accent-soft: rgba(77, 163, 255, 0.12);
+    --accent-fg: #0b0b0c;
+    --ok: #4ade80;
+    color-scheme: dark;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid var(--border); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
-    font-family: var(--sans);
-    line-height: 1.5;
-    background: var(--background);
-    color: var(--foreground);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background: var(--bg); color: var(--fg);
+    font-family: var(--sans); font-size: 16px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
   a { color: inherit; text-decoration: none; }
-  button { font: inherit; color: inherit; background: none; cursor: pointer; }
-  svg.icon { display: inline-block; flex-shrink: 0; }
+  ul, ol { list-style: none; }
+  img { display: block; max-width: 100%; height: auto; }
+  ::selection { background: var(--accent); color: var(--accent-fg); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
-  .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
-  @media (min-width: 640px) { .container { padding: 0 2rem; } }
+  .i {
+    width: 16px; height: 16px; flex-shrink: 0;
+    fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 640px) { .wrap { padding: 0 16px; } }
+
+  .skip {
+    position: absolute; left: -9999px; top: 12px; z-index: 100;
+    background: var(--fg); color: var(--bg); padding: 8px 14px; border-radius: 8px; font-size: 14px;
+  }
+  .skip:focus { left: 16px; }
 
   /* ---------- Header ---------- */
-  .site-header {
+  .top {
     position: sticky; top: 0; z-index: 50;
-    border-bottom: 1px solid var(--border);
-    padding: 0.75rem 0;
-    background: rgba(255,255,255,0.75);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line);
   }
-  .site-header .container { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-
-  .brand { display: flex; align-items: center; gap: 0.625rem; }
-  .monogram {
-    width: 2rem; height: 2rem; border-radius: var(--radius);
-    background: rgba(0,128,255,0.1); color: var(--primary);
-    border: 1px solid rgba(0,128,255,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--mono); font-weight: 700; font-size: 12px; letter-spacing: 0.05em;
-    transition: all 0.15s;
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { display: flex; flex-direction: column; gap: 2px; line-height: 1.2; }
+  .brand-name { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .brand-where { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--muted); }
+  .brand-where .i { width: 11px; height: 11px; color: var(--accent); }
+  .top nav { display: flex; align-items: center; gap: 24px; font-size: 14px; color: var(--muted); }
+  .top nav a:hover { color: var(--fg); }
+  .nav-actions { display: flex; align-items: center; gap: 8px; }
+  .top nav .cv {
+    display: inline-flex; align-items: center; height: 32px; padding: 0 14px;
+    color: var(--fg); border: 1px solid var(--line-strong); border-radius: 999px;
+    transition: border-color 0.15s;
   }
-  .brand:hover .monogram { background: var(--primary); color: var(--primary-foreground); }
-  .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
-  .brand-name { font-size: 14px; font-weight: 600; letter-spacing: -0.015em; transition: color 0.15s; }
-  .brand:hover .brand-name { color: var(--primary); }
-  .brand-role { font-size: 11px; font-weight: 500; color: var(--muted-foreground); }
-  @media (min-width: 640px) { .brand-name { font-size: 16px; } .brand-role { font-size: 12px; } }
-
-  .nav-pill {
-    display: none; align-items: center; gap: 0.25rem;
-    background: rgba(241,245,249,0.5); padding: 0.25rem;
-    border-radius: 9999px; border: 1px solid rgba(226,232,240,0.6);
-    font-size: 12px; font-weight: 500; color: var(--muted-foreground);
+  .top nav .cv:hover { border-color: var(--fg); }
+  .theme {
+    display: inline-grid; place-items: center; width: 32px; height: 32px;
+    border: 1px solid var(--line-strong); border-radius: 999px; background: none;
+    color: var(--muted); cursor: pointer; transition: color 0.15s, border-color 0.15s;
   }
-  @media (min-width: 768px) { .nav-pill { display: flex; } }
-  .nav-pill a {
-    display: flex; align-items: center; gap: 0.375rem;
-    padding: 0.25rem 0.75rem; border-radius: 9999px; transition: all 0.15s;
+  .theme:hover { color: var(--fg); border-color: var(--fg); }
+  .theme .sun { display: none; }
+  :root[data-theme="dark"] .theme .sun { display: block; }
+  :root[data-theme="dark"] .theme .moon { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme .sun { display: block; }
+    :root:not([data-theme="light"]) .theme .moon { display: none; }
   }
-  .nav-pill a:hover { color: var(--foreground); background: rgba(255,255,255,0.8); }
-  .nav-pill svg { color: var(--primary); }
-
-  .header-actions { display: flex; align-items: center; gap: 0.5rem; }
-  @media (min-width: 640px) { .header-actions { gap: 0.625rem; } }
-  .btn-sm {
-    display: flex; align-items: center; gap: 0.375rem;
-    padding: 0.375rem 0.75rem; border-radius: var(--radius);
-    font-size: 12px; font-weight: 500; box-shadow: var(--shadow-sm);
-    transition: background 0.15s;
-  }
-  .btn-sm.outline { border: 1px solid var(--border); }
-  .btn-sm.outline:hover { background: var(--muted); }
-  .btn-sm.outline svg { color: var(--primary); }
-  .btn-sm.dark { background: var(--foreground); color: var(--background); }
-  .btn-sm.dark:hover { background: rgba(2,8,23,0.9); }
-  .hide-xs { display: none; }
-  @media (min-width: 640px) { .hide-xs { display: inline; } }
+  @media (max-width: 640px) { .top nav { gap: 12px; } }
+  @media (max-width: 380px) { .top nav a[href="#work"] { display: none; } }
 
   /* ---------- Hero ---------- */
-  main { flex: 1; padding: 3rem 0; }
-  .hero { max-width: 48rem; margin: 0 auto 3rem; text-align: center; }
-  .badge-hero {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.25rem 0.75rem; border-radius: 9999px;
-    font-size: 12px; font-weight: 500;
-    background: rgba(0,128,255,0.1); color: var(--primary);
-    border: 1px solid rgba(0,128,255,0.2);
-    margin-bottom: 1rem;
+  .hero { padding-block: 112px 72px; }
+  .eyebrow { font-size: 15px; font-weight: 500; margin-bottom: 22px; }
+  .eyebrow .role { color: var(--muted); font-weight: 400; }
+  .hero h1 {
+    font-size: clamp(2.5rem, 1.3rem + 4.6vw, 4.5rem);
+    line-height: 1.02; letter-spacing: -0.04em; font-weight: 600;
+    max-width: 15ch; text-wrap: balance;
   }
-  .hero h1 { font-size: 36px; line-height: 40px; font-weight: 800; letter-spacing: -0.025em; margin-bottom: 1rem; }
-  @media (min-width: 640px) { .hero h1 { font-size: 48px; line-height: 1; } }
-  .hero-bio { font-size: 15px; color: var(--muted-foreground); max-width: 40rem; margin: 0 auto 1.25rem; line-height: 1.65; }
-  .stack-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.375rem; margin-bottom: 1.5rem; }
-  .chip {
-    display: inline-flex; align-items: center; border-radius: 9999px;
-    border: 1px solid var(--border); padding: 0.125rem 0.625rem;
-    font-size: 12px; font-weight: 600; color: var(--foreground); background: var(--card);
+  .hero h1 em { font-style: normal; color: var(--muted); }
+  .stack { margin-top: 32px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .actions { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    height: 42px; padding: 0 18px; border-radius: 999px;
+    border: 1px solid var(--line-strong); font-size: 15px; font-weight: 500;
+    transition: background 0.15s, border-color 0.15s, opacity 0.15s;
   }
-  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.75rem; }
-  .btn-pill {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.5rem 1rem; border-radius: 9999px;
-    font-size: 14px; font-weight: 600; transition: all 0.15s;
+  .btn:hover { border-color: var(--fg); }
+  .btn.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .btn.primary:hover { opacity: 0.86; }
+  @media (max-width: 640px) {
+    .hero { padding-block: 64px 48px; }
   }
-  .btn-pill.primary { background: var(--primary); color: #fff; box-shadow: var(--shadow-sm); }
-  .btn-pill.primary:hover { background: var(--primary-hover); }
-  .btn-pill.outline { border: 1px solid var(--border); background: var(--card); }
-  .btn-pill.outline:hover { background: var(--muted); }
+
+  /* ---------- Companies (logo marquee) ---------- */
+  .worked {
+    display: flex; align-items: center; gap: 32px; margin-bottom: 72px;
+    padding-block: 20px; border-block: 1px solid var(--line);
+  }
+  .worked-label {
+    flex: none; font-family: var(--mono); font-size: 12px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--muted); white-space: nowrap;
+  }
+  .marquee {
+    flex: 1; min-width: 0; overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .track { display: flex; width: max-content; animation: marquee 36s linear infinite; }
+  .marquee:hover .track { animation-play-state: paused; }
+  .logos { display: flex; align-items: center; gap: 64px; padding-right: 64px; }
+  .logos li { display: flex; }
+  .logo { display: block; color: var(--muted); transition: color 0.2s; }
+  .logos li:hover .logo { color: var(--fg); }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @media (max-width: 640px) {
+    .worked { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 48px; }
+    .marquee { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .track { width: auto; }
+    .logos { flex-wrap: wrap; gap: 20px 44px; padding-right: 0; }
+    .logos[aria-hidden="true"] { display: none; }
+    .marquee { -webkit-mask-image: none; mask-image: none; }
+  }
 
   /* ---------- Sections ---------- */
-  .section { scroll-margin-top: 5rem; padding-bottom: 3rem; }
-  .section-head { text-align: center; margin-bottom: 2rem; }
-  .section-head h2 { font-size: 24px; line-height: 32px; font-weight: 700; }
-  .section-head p { font-size: 14px; color: var(--muted-foreground); margin-top: 0.25rem; }
-  .blue { color: var(--bright-blue); }
-
-  .grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; grid-auto-rows: 1fr; }
-  .repo-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-  @media (min-width: 640px) { .grid, .repo-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1024px) { .grid, .repo-grid { grid-template-columns: repeat(3, 1fr); } }
-
-  /* ---------- Cards ---------- */
-  .card {
-    border-radius: var(--radius); border: 1px solid var(--border);
-    background: var(--card); box-shadow: var(--shadow-sm);
-    display: flex; flex-direction: column; justify-content: space-between;
-    height: 100%; overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  .section { padding-block: 24px 96px; scroll-margin-top: 60px; }
+  .section-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    border-top: 1px solid var(--line); padding-top: 20px; margin-bottom: 40px;
   }
-  .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-  .card.featured { border-color: rgba(0,128,255,0.5); box-shadow: 0 0 0 1px rgba(0,128,255,0.2), var(--shadow-sm); }
-  .card.featured:hover { box-shadow: 0 0 0 1px rgba(0,128,255,0.2), 0 10px 20px rgba(0,0,0,0.1); }
+  .section-head h2 {
+    font-family: var(--mono); font-size: 13px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+  }
+  .section-head p { font-size: 14px; color: var(--muted); }
+  @media (max-width: 640px) { .section { padding-bottom: 64px; } }
 
-  .card-head { padding: 1.5rem 1.5rem 0.5rem; display: flex; flex-direction: column; gap: 0.375rem; }
-  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.25rem; }
-  .card-top svg { color: var(--muted-foreground); }
-  .card.featured .card-top svg { color: var(--primary); }
+  /* ---------- Case studies ---------- */
+  .case {
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center;
+    padding: 40px; margin-bottom: 24px;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  }
+  .case.flip .visual { order: -1; }
+  .kicker {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .live { display: inline-flex; align-items: center; gap: 6px; color: var(--ok); }
+  .live::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 50% { opacity: 0.35; } }
+  .case h3 { font-size: 28px; line-height: 1.15; letter-spacing: -0.025em; font-weight: 600; }
+  .lede { margin-top: 12px; font-size: 17px; color: var(--muted); max-width: 52ch; }
+  .points { margin-top: 20px; }
+  .points li { position: relative; padding-left: 20px; margin-top: 10px; font-size: 15px; color: var(--muted); }
+  .points li::before {
+    content: ""; position: absolute; left: 2px; top: 0.68em;
+    width: 6px; height: 6px; border-radius: 2px; background: var(--accent); opacity: 0.8;
+  }
+  .points strong { color: var(--fg); font-weight: 500; }
+  .tech {
+    margin-top: 24px; padding-top: 16px; border-top: 1px dashed var(--line-strong);
+    font-family: var(--mono); font-size: 12.5px; color: var(--muted);
+  }
+  .links { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 20px; }
+  .link {
+    display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 500;
+    border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; transition: border-color 0.15s;
+  }
+  .link:hover { border-color: var(--fg); }
+  .link .i { width: 14px; height: 14px; transition: transform 0.15s; }
+  .link:hover .i { transform: translate(2px, -2px); }
+
+  .visual {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 28px 20px; border: 1px solid var(--line); border-radius: 10px;
+    background-color: var(--bg);
+    background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+  .visual figcaption {
+    margin-top: 16px; max-width: 34ch; text-align: center;
+    font-family: var(--mono); font-size: 11.5px; line-height: 1.5; color: var(--muted);
+  }
+
+  /* Diagrams */
+  .dg { width: 100%; max-width: 352px; height: auto; overflow: visible; }
+  .dg .node rect { fill: var(--card); stroke: var(--line-strong); stroke-width: 1; }
+  .dg .node.accent rect { fill: var(--accent-soft); stroke: var(--accent); }
+  .dg .frame { fill: none; stroke: var(--edge); stroke-width: 1; stroke-dasharray: 4 4; }
+  .dg .t { font: 600 12.5px var(--mono); fill: var(--fg); text-anchor: middle; }
+  .dg .s { font: 400 10.5px var(--mono); fill: var(--muted); text-anchor: middle; }
+  .dg .lbl { font: 400 10px var(--mono); fill: var(--muted); }
+  .dg .lbl.mid { text-anchor: middle; }
+  .dg .lbl.strong { font-weight: 600; fill: var(--fg); }
+  .dg .edge { fill: none; stroke: var(--edge); stroke-width: 1.25; }
+  .dg .edge.dash { stroke-dasharray: 3 3; }
+  .dg .head { fill: var(--edge); }
+
+  /* Phone */
+  .phone {
+    width: 220px; padding: 8px; border-radius: 36px; background: #000;
+    box-shadow: 0 0 0 1px var(--line-strong), 0 28px 60px -24px rgba(0, 0, 0, 0.45);
+  }
+  .phone img { width: 100%; border-radius: 28px; }
+
+  @media (max-width: 860px) {
+    .case { grid-template-columns: 1fr; gap: 28px; padding: 24px 20px; }
+    .case.flip .visual { order: 0; }
+    .case h3 { font-size: 24px; }
+    .visual { padding: 24px 12px; }
+  }
+
+  /* ---------- More projects ---------- */
+  .list { border-top: 1px solid var(--line); }
+  .row {
+    display: grid; grid-template-columns: 190px 1fr auto 18px;
+    grid-template-areas: "name desc tags go";
+    gap: 24px; align-items: center;
+    padding: 20px 4px; border-bottom: 1px solid var(--line);
+  }
+  .row-name { grid-area: name; font-family: var(--mono); font-size: 15px; font-weight: 500; transition: color 0.15s; }
+  .row-desc { grid-area: desc; font-size: 15px; color: var(--muted); }
+  .row-tags { grid-area: tags; display: flex; gap: 6px; justify-content: flex-end; }
+  .row .go { grid-area: go; color: var(--muted); transition: transform 0.15s, color 0.15s; }
+  .row:hover .row-name, .row:hover .go { color: var(--accent); }
+  .row:hover .go { transform: translate(2px, -2px); }
   .tag {
-    display: inline-flex; align-items: center; border-radius: 9999px;
-    border: 1px solid var(--border); font-size: 10px; font-weight: 600;
-    padding: 0.125rem 0.5rem; color: var(--foreground); white-space: nowrap;
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted); white-space: nowrap;
+    border: 1px solid var(--line-strong); border-radius: 999px; padding: 1px 9px;
   }
-  .tag.solid { background: var(--primary); color: var(--primary-foreground); border-color: transparent; }
-  .card h3 { font-size: 16px; line-height: 1.375; font-weight: 600; letter-spacing: -0.015em; }
-  .card-body { padding: 0 1.5rem 0.75rem; }
-  .card-body p {
-    font-size: 12px; line-height: 1.625; color: var(--muted-foreground);
-    overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;
+  .tag.ai { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .all { margin-top: 28px; }
+  @media (max-width: 760px) {
+    .row {
+      grid-template-columns: 1fr 18px;
+      grid-template-areas: "name go" "desc desc" "tags tags";
+      gap: 6px 12px; padding: 18px 2px;
+    }
+    .row-tags { justify-content: flex-start; margin-top: 6px; }
   }
-  .card-foot { padding: 0 1rem 1rem; }
-  .card-link {
-    display: flex; align-items: center; justify-content: center; gap: 0.375rem;
-    padding: 0.5rem 0.75rem; border-radius: calc(var(--radius) - 2px);
-    font-size: 12px; font-weight: 500; transition: background 0.15s;
-    border: 1px solid rgba(0,128,255,0.2); color: var(--primary);
-  }
-  .card-link:hover { background: rgba(0,128,255,0.05); }
-  .card-link.solid { background: var(--primary); color: #fff; border-color: var(--primary); font-weight: 600; box-shadow: var(--shadow-sm); }
-  .card-link.solid:hover { background: var(--primary-hover); }
 
-  /* Exploring card spans the full row */
-  .explore-card { max-width: 56rem; margin: 0 auto; }
-  .explore-card .card-body p { -webkit-line-clamp: unset; font-size: 14px; }
-  .explore-card .chips-row { display: flex; flex-wrap: wrap; gap: 0.375rem; padding: 0 1.5rem 1.5rem; }
+  /* ---------- Contact ---------- */
+  .contact { padding-block: 32px 120px; scroll-margin-top: 60px; }
+  .contact .big {
+    margin-top: 40px;
+    font-size: clamp(2.25rem, 1.4rem + 3.6vw, 4rem); line-height: 1.05;
+    letter-spacing: -0.04em; font-weight: 600;
+  }
+  .contact p { margin-top: 12px; font-size: 17px; color: var(--muted); }
+  .email {
+    display: inline-block; margin-top: 28px;
+    font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem); font-weight: 500; letter-spacing: -0.01em;
+    border-bottom: 2px solid var(--accent); padding-bottom: 2px; transition: color 0.15s;
+  }
+  .email:hover { color: var(--accent); }
+  .contact-links { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 15px; }
+  .contact-links a { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); transition: color 0.15s; }
+  .contact-links a:hover { color: var(--fg); }
+  @media (max-width: 640px) { .contact { padding-bottom: 80px; } }
 
-  /* ---------- Repository cards ---------- */
-  .filter-wrap { display: flex; justify-content: center; margin-bottom: 2rem; }
-  .filter {
-    display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center;
-    background: #f3f4f6; border-radius: 9999px; padding: 0.25rem; box-shadow: var(--shadow-sm);
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 24px;
+    padding-top: 24px; padding-bottom: 40px;
+    font-family: var(--mono); font-size: 12.5px; color: var(--muted);
   }
-  .filter button {
-    padding: 0.5rem 1.25rem; border-radius: 9999px; font-weight: 500; font-size: 14px;
-    color: #4b5563; transition: background 0.15s, color 0.15s;
-  }
-  .filter button.active { background: var(--bright-blue); color: #fff; }
-  .filter button:not(.active):hover { color: var(--foreground); }
 
-  .repo-cover {
-    height: 12rem; position: relative; overflow: hidden; background: var(--muted);
-    display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+  /* ---------- Motion ---------- */
+  .hero > * { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .hero > :nth-child(2) { animation-delay: 0.06s; }
+  .hero > :nth-child(3) { animation-delay: 0.12s; }
+  .hero > :nth-child(4) { animation-delay: 0.18s; }
+  .hero > :nth-child(5) { animation-delay: 0.24s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
   }
-  .repo-cover .cover-name {
-    position: relative; font-family: var(--mono); font-weight: 700; font-size: 20px;
-    color: #fff; text-align: center; word-break: break-word; text-shadow: 0 1px 2px rgba(0,0,0,0.25);
-  }
-  .repo-cover .cover-bar {
-    position: absolute; left: 0; right: 0; bottom: 0;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0.375rem 0.75rem; background: rgba(0,0,0,0.5); color: #fff; font-size: 12px;
-  }
-  .repo-card .card-head h3 { font-size: 18px; line-height: 28px; }
-  .repo-card .card-body { padding: 0 1.5rem 1.5rem; }
-  .repo-card .card-body p { font-size: 15px; line-height: 1.5; }
-  .repo-card .tags { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.25rem; }
-  .repo-card .tags .tag { font-size: 12px; padding: 0.125rem 0.625rem; }
-  .btn-details {
-    margin-top: 1rem; width: 100%; height: 2.25rem;
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-    border: 1px solid var(--border); border-radius: calc(var(--radius) - 2px);
-    font-size: 14px; font-weight: 500; background: var(--background); transition: background 0.15s;
-  }
-  .btn-details:hover { background: var(--muted); }
-  .repo-foot {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0.5rem 1.5rem 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem;
-  }
-  .repo-stats { display: flex; align-items: center; gap: 1rem; }
-  .repo-stats span { display: flex; align-items: center; gap: 0.25rem; font-size: 14px; color: var(--muted-foreground); }
-  .repo-view { display: flex; align-items: center; gap: 0.25rem; font-size: 14px; font-weight: 500; color: var(--primary); }
-  .repo-view:hover { text-decoration: underline; }
-  .repo-status { text-align: center; color: var(--muted-foreground); font-size: 14px; grid-column: 1 / -1; padding: 2rem 0; }
-  .repo-status a { color: var(--primary); font-weight: 500; }
-  .repo-status a:hover { text-decoration: underline; }
-
-  /* ---------- Footer ---------- */
-  footer { border-top: 1px solid var(--border); padding: 1.5rem 0; }
-  footer .container { text-align: center; font-size: 14px; color: var(--muted-foreground); }
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container">
-    <a href="#" class="brand">
-      <div class="monogram">KS</div>
-      <div class="brand-text">
-        <span class="brand-name">Kulwant Singh</span>
-        <span class="brand-role">Senior Backend Engineer</span>
-      </div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <!-- Lucide icons, ISC licence -->
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-5-2"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <!-- Company logos: official artwork, recoloured to currentColor so they follow the theme -->
+  <symbol id="logo-fdj" viewBox="0 0 220 33"><g fill="currentColor"><ellipse cx="209.21" cy="11.05" rx="10.79" ry="11.05" fill="currentColor"/><path d="M209.21 4.94L203.24 11.05L209.21 17.17L215.18 11.05L209.21 4.94Z" style="fill:var(--bg)"/><path d="M31.51 7.39H20.84V29.49H31.51C37.64 29.49 42.58 24.53 42.58 18.41C42.58 12.31 37.64 7.39 31.51 7.39ZM30.71 23.96H27.13V12.94H30.71C33.67 12.94 36.1 15.41 36.1 18.44C36.1 21.5 33.67 23.96 30.71 23.96Z" fill="currentColor"/><path d="M169.49 13.13V7.39H151.19V29.49H169.49V23.74H157.42V21.09H166.71V15.79H157.42V13.13H169.49Z" fill="currentColor"/><path d="M127.19 13.23H134.62V29.49H140.91V13.23H148.25V7.39H127.19V13.23Z" fill="currentColor"/><path d="M124.24 7.39H117.95V29.49H124.24V7.39Z" fill="currentColor"/><path d="M107.59 20.52L98.65 7.39H91.47V29.49H97.51V16.32L106.64 29.49H113.61V7.39H107.59V20.52Z" fill="currentColor"/><path d="M81.24 19.17C81.24 22.07 79.42 24 76.89 24C74.36 24 72.54 22.1 72.54 19.17V7.39H66.22V19.04C66.22 26.17 70.63 29.77 76.89 29.77C83.15 29.77 87.37 26.21 87.37 19.04V7.39H81.24V19.17Z" fill="currentColor"/><path d="M47.85 22.64C47.85 25.86 46.09 27.6 42.42 27V32.93C49.73 33.53 54.14 30.15 54.14 22.99V7.39H47.85V22.64Z" fill="currentColor"/><path d="M183.76 7.39H173.09V29.49H183.76C189.9 29.49 194.83 24.53 194.83 18.41C194.83 12.31 189.9 7.39 183.76 7.39ZM182.96 23.96H179.38V12.94H182.96C185.92 12.94 188.35 15.41 188.35 18.44C188.35 21.5 185.92 23.96 182.96 23.96Z" fill="currentColor"/><path d="M0 29.49H6.29V22.1H15.69V16.39H6.29V13.29H17.79V7.39H0V29.49Z" fill="currentColor"/></g></symbol>
+  <symbol id="logo-leovegas" viewBox="0 0 212 63"><g fill="currentColor"><g clip-path="url(#leovegas-clip0_1099_510)"><path d="M10.69 35.96C10.84 32.78 12.07 29.8 13.61 27.07C14.46 25.55 15.46 24.07 16.6 22.74C16.66 23.88 16.7 24.85 16.73 25.99C16.8 29.01 19.59 30.43 20.7 34.08C21.32 31.1 18.86 29.16 18.38 27.69C18.02 26.57 18.04 25.53 18.15 24.51C18.34 22.84 17.55 21.66 17.55 21.66L14.85 18.7C14.7 18.7 12.9 20.09 12.66 20.27C11.69 21 10.73 21.75 9.82 22.53C3.87 27.6 1.75 35.18 5.59 42.27C6.57 44.09 7.81 45.79 9.17 47.34L7.73 42.59C7.17 40.29 7.59 37.18 8.54 35.02C8.57 34.96 8.59 34.83 8.66 34.83C8.22 39.63 9.63 44.56 12.33 48.51C13.6 50.37 15.13 51.95 16.93 53.31L17 53.24C12.72 48.63 10.4 42.27 10.69 35.96V35.96Z" fill="currentColor"></path><path d="M21.94 21.85C22.38 21.97 22.98 21.93 23.45 22.02C25.4 22.38 26.43 24.33 28.37 24.5C28.98 24.56 30.15 24.38 30.66 24.58C30.9 24.67 31.84 25.51 32.1 25.73C32.7 26.25 33.23 26.84 33.86 27.33L32.25 22.43C30.42 21.15 27.93 20.48 25.68 20.71C24.34 20.84 23.07 21.38 21.77 21.73C21.79 21.8 21.88 21.84 21.94 21.85Z" fill="currentColor"></path><path d="M21.78 14.34C21.69 14.27 21.43 14.15 21.31 14.08C20.13 13.44 17.22 12.26 15.94 12.66C15.36 12.84 15.23 13.41 15.15 13.95C14.88 15.78 15.7 17.76 17.16 18.87C17.52 17.99 17.52 16.98 18.16 16.21C19.03 15.15 20.68 15.06 21.86 14.47C21.88 14.39 21.84 14.38 21.78 14.34L21.78 14.34Z" fill="currentColor"></path><path d="M54.21 18.35C53.68 18.03 53.09 17.64 52.49 17.51C52.51 17.44 52.73 17.42 52.79 17.42C54.23 17.31 56.02 17.7 57.09 18.71C57.15 18.69 57.09 18.62 57.08 18.58C57 18.33 56.82 17.97 56.7 17.71C54.51 12.97 50.91 9.18 46.7 6.17C43.93 4.18 40.83 2.97 37.59 1.93C37.84 2.18 38.12 2.41 38.36 2.67C39.1 3.49 40.19 5.4 40.28 6.49C40.39 7.94 40.22 8.84 39.44 10.22L38.66 11.41C38.84 9.46 39.22 7.56 38.51 5.67C37.18 2.15 32.97 .77 29.56 .28C26.72 -.14 23.95 -.08 21.12 .42C20.65 .51 19.57 .66 19.18 .84C19.14 .85 19.09 .87 19.1 .92C19.89 1 20.72 .95 21.52 1.01C26.37 1.39 32.99 4.28 34.69 9.2C35.14 10.5 35.09 11.43 35.05 12.77C35.03 13.34 35.02 13.9 35.01 14.46C34.84 14.3 34.82 14.02 34.72 13.8C33.53 11.14 31.65 11.94 29.87 10.42C28.82 9.51 27.67 7.83 27.14 6.54C27.11 6.47 27.02 6.34 27.07 6.28C28.5 7.37 29.85 8.78 31.41 9.66C32.11 10.05 32.9 10.29 33.46 10.9L34.08 11.66C33.29 8.54 30.94 6.29 28.3 4.64C23.59 1.7 18.8 1.59 13.75 3.77C11.37 4.8 9.07 6.28 7.26 8.13C9.11 7.5 10.91 6.76 12.84 6.39C16.26 5.73 19.27 6.03 22.47 7.37C23.89 7.96 25.31 8.72 26.45 9.75C25.7 9.47 24.97 9.13 24.21 8.87C19.93 7.38 15.05 6.92 10.75 8.54C7.67 9.7 3.98 12.91 2.42 15.8C1.11 18.24 .59 21 0 23.69L.04 23.77C.53 22.68 1.02 21.57 1.61 20.53C2.43 19.07 3.53 17.81 4.76 16.68L3.39 18.99C1.54 22.53 -.4 28.43 .63 32.38C.82 33.14 1.01 34.25 1.57 34.8C1.96 30.35 3.55 25.65 6.84 22.53C8.2 21.23 9.97 20.07 11.61 19.14C12.34 18.72 13.32 18.44 14.43 18.1C13.99 17.17 13.62 15.82 13.42 14.82C13.15 13.5 13.51 10.98 14.73 10.87C16.45 10.71 18.8 11.21 20.42 11.84C21.61 12.3 25.63 13.99 25.63 13.99L28.21 13.29C28.21 13.29 32.14 12.66 35.63 16.68C35.7 16.77 36.5 17.5 36.5 17.5C36.5 17.5 36.63 17.14 36.66 17.1C36.95 16.51 37.18 15.89 37.67 15.4C39.35 13.73 41.01 13.81 43.12 13.43C44.74 13.14 46.96 12.39 48.54 12.55C49.11 12.6 49.15 12.77 49.43 13.23C50.11 14.34 50.71 15.64 50.43 16.68C50.15 17.67 49.26 18.6 48.52 19.31C48.37 19.33 47.91 18.57 47.86 18.41C48.57 17.35 49.32 16.6 48.82 15.25C48.75 15.06 48.31 14.14 48.18 14.05C47.99 13.92 47.67 14.02 47.45 14.05C46.11 14.24 44.59 14.84 43.39 15.45C43.69 15.65 44.19 15.66 44.47 15.87C44.69 16.04 45 16.22 45.2 16.45C46.4 17.79 47.26 19.56 47.86 21.25C45.88 20.79 43.91 21.26 42.19 22.26C41.95 22.4 41.01 22.97 40.98 23.22C40.94 23.59 41.95 25.12 42.21 25.49C43.59 27.49 45.34 29.27 46.74 31.27C47.93 32.97 48.57 34.08 48.46 36.25C48.4 37.51 47.81 40.21 47.13 41.26C46.84 41.69 46.61 41.48 46.21 41.33C45.6 41.08 44.88 40.72 44.3 40.42C43.27 39.88 42.21 39.29 41.55 38.32C41.66 37.29 41.7 36.33 42.62 35.69C42.9 35.49 43.23 35.38 43.53 35.21C44.03 34.9 45.51 33.65 45.79 33.17C46.04 32.73 46.25 31.55 45.6 31.4C44.89 31.23 43.52 31.82 42.74 31.93C40.92 32.17 39.3 31.58 37.55 31.3C36.48 31.13 34.34 30.69 34.98 32.53C35.26 33.34 36.82 34.47 37.58 34.88C38.03 35.13 38.36 35.12 38.81 35.26C39.29 35.41 40.04 36.14 40.19 36.61C40.33 37.05 40.31 38.07 40 38.43C39.84 38.61 39.38 38.72 39.15 38.83C36.17 40.25 32.77 42.51 29.35 41.58C28.02 41.22 27.04 40.88 26.12 39.67C26.78 40.07 27.55 40.41 28.31 40.59C28.37 40.6 29.06 40.69 29.06 40.57C28.71 40.34 28.35 40.14 28 39.94C27.45 39.4 26.24 38.18 25.78 37.29C24.82 35.43 25.08 33.32 25.08 33.32C25.08 33.32 24.75 33.77 24.58 34.95C24.49 35.51 24.29 35.71 24.11 35.84C24.11 35.81 24.1 35.78 24.1 35.75C22.67 34.81 22.21 31.61 21.2 30.27L21.52 31.24C22.02 33.03 21.35 35.5 20.78 37.25C20.76 37.31 20.74 37.47 20.66 37.48C20.54 36.91 20.35 36.34 20.16 35.79C19.44 33.77 18.56 31.69 17.17 30.04C17.13 31.22 17.37 32.49 17.63 33.64C18.24 36.29 19.48 38.66 20.4 41.19C20.41 41.22 20.48 41.36 20.39 41.3C16.39 37.57 15 31.74 15.81 26.43C14.7 28.12 13.73 30.05 13.11 31.99C12.34 34.43 12.19 37.41 12.48 39.95C12.84 42.97 14.36 46.27 15.78 48.95C16.92 51.09 18.06 52.62 19.67 54.4C21.89 56.86 25.02 58.22 27.65 60.18C27.71 60.1 27.33 59.39 27.26 59.25C27 58.79 26.68 58.26 26.38 57.81C24.85 55.5 23.06 53.3 21.5 51L21.52 50.93L26.91 54.58L23.56 48.71C25.14 50.44 26.95 51.98 28.27 53.94C29.99 56.51 31 59.43 31.44 62.49C31.55 62.51 31.52 62.48 31.54 62.43C31.86 61.85 32.14 60.19 32.18 59.51C32.32 57.13 31.71 55.63 30.88 53.51C30.86 53.46 30.8 53.37 30.86 53.34C32.25 54.57 33.35 56.49 33.57 58.35C33.68 59.29 33.54 60.24 33.37 61.16C33.26 61.77 33.07 62.38 32.97 63C35.89 61.79 38.83 60.61 41.68 59.25C46.05 57.15 49.56 55.12 51.11 50.23C51.78 48.1 52.25 45.86 52.72 43.67L52.85 44.34C52.95 45.72 52.81 47.1 52.56 48.44C52.25 50.14 51.71 51.72 51 53.29C52.84 51.69 54.07 49.58 54.89 47.3C55.85 44.63 56.29 41.78 55.79 38.96C55.37 36.58 54.54 34.3 53.78 32.02L54.35 32.86C55.96 35.5 57.3 38.49 57.34 41.64L57.65 40.45C58.96 35.16 58.23 28.93 54.75 24.61C54.42 24.2 54.03 23.84 53.73 23.43C53.77 23.39 53.98 23.58 54.03 23.61C55.81 24.97 57.31 26.77 58.19 28.84C58.92 30.52 59.2 32.32 59.61 34.1L59.77 33.55C61.15 27.34 59.77 21.78 54.21 18.35L54.21 18.35ZM25.54 38.86C25.59 38.88 25.7 39.05 25.81 39.23C25.66 39.04 25.53 38.85 25.54 38.86ZM44.97 47.56C44.77 47.87 44.44 48.42 44.21 48.68C44.18 48.72 44.12 48.75 44.07 48.76C43.86 48.61 44.12 47.74 44.16 47.49C44.24 46.85 44.19 46.28 44.05 45.66C44.03 45.59 44.02 45.41 43.93 45.39C43.87 46.01 43.68 46.67 43.47 47.26C42.65 49.52 40.59 50.83 39.01 52.51C38.93 51.93 38.95 51.33 38.75 50.77C38.67 50.54 38.25 49.78 38.03 49.69C37.93 49.64 37.98 49.74 37.98 49.78C38.01 50.09 38.03 50.32 37.92 50.61L37.85 50.52L37.73 50.61C37.04 49.28 35.58 48.57 34.61 47.47C34.08 46.86 33.67 46.15 33.23 45.48C33.18 45.95 33.57 46.6 33.58 47.03C33.58 47.09 33.58 47.18 33.53 47.22L33.34 47.19V47.33L33.24 47.32C31.53 46.1 29.89 44.76 28.49 43.19L28.67 43.17L28.62 43.03C29.1 42.95 29.53 43.18 29.99 43.21C32.98 43.46 36.28 41.32 38.99 40.23C39.39 40.07 40.53 39.61 40.9 39.62C41.33 39.62 42.89 40.84 43.35 41.13C44.34 41.77 45.46 42.41 46.66 42.43C46.67 44.26 45.92 46.02 44.97 47.55L44.97 47.56ZM48.83 28.11C48.7 28.37 47.5 30.24 47.38 30.27C47.15 30.09 47.01 29.76 46.84 29.52C45.65 27.89 43.88 26.67 43.14 24.74L43.22 24.64C44.18 24.61 45.26 24.46 45.89 23.66C46.13 23.35 46.47 22.43 46.72 22.31C46.78 22.28 46.9 22.25 46.97 22.24C47.16 22.21 47.85 22.22 47.98 22.37C48.25 23.37 48.7 24.33 48.98 25.34C49.28 26.41 49.33 27.09 48.83 28.12L48.83 28.11Z" fill="currentColor"></path><path d="M81.75 39.26H71.85L74.92 22.07H70.47L66.74 43.13H81.06L81.75 39.26ZM99.83 25.92C100.61 24.46 101.59 23.17 102.73 22.08H88.18L84.45 43.14H100.74C99.8 42.03 99.06 40.73 98.55 39.26H89.49L90.39 34.25H97.77C97.78 32.95 97.92 31.71 98.17 30.51H91.04L91.87 25.92H99.83H99.83ZM117.41 31.68C117.41 36.65 114.58 39.91 110.95 39.91C107.99 39.91 106.19 37.44 106.19 34.22C106.19 29.24 108.99 25.99 112.61 25.99C115.58 25.99 117.41 28.46 117.41 31.68M121.86 31.65C121.86 26.02 118.3 22.08 112.68 22.08C106.61 22.08 101.71 27.29 101.71 34.25C101.71 39.88 105.27 43.82 110.89 43.82C116.99 43.82 121.86 38.61 121.86 31.65M129.81 43.14L142.44 22.08H140.57L129.43 40.7L125.88 22.08H124.12L128.23 43.14H129.81H129.81ZM157.77 22.07H145.79L142.07 43.13H155.52C155.08 42.64 154.67 42.1 154.32 41.52H144.07L145.55 33.08H152.56C152.6 32.55 152.66 32.02 152.75 31.51H145.83L147.21 23.69H156.22C156.7 23.11 157.21 22.56 157.77 22.07ZM173.51 28.18H175.2C174.68 24.54 171.85 22.14 167.78 22.14C161.36 22.14 157.12 28.08 157.12 34.59C157.12 40.15 160.53 43.82 165.5 43.82C170.47 43.82 173.99 40.29 174.92 35.11L175.16 33.63H167.99L167.71 35.18H173.2C172.44 39.57 169.64 42.17 165.5 42.17C161.36 42.17 158.91 39.12 158.91 34.59C158.91 28.63 162.57 23.79 167.78 23.79C170.78 23.79 172.88 25.5 173.51 28.18M189.74 35.32H181.63L187.7 25.03L189.74 35.32ZM191.46 43.82H193.19L188.91 22.76H187.25L174.77 43.82H176.63L180.73 36.86H190.05L191.46 43.82H191.46ZM212 27.73C211.66 24.51 209.21 22.14 204.93 22.14C200.96 22.14 197.79 24.58 197.79 28.35C197.79 30.86 199.34 32.16 201.86 32.91L205.65 34.11C207.86 34.8 208.72 35.93 208.72 37.34C208.72 40.49 206.2 42.24 202.96 42.24C200.06 42.24 197.69 40.91 197.31 38.06H195.54C195.89 41.76 198.96 43.82 202.96 43.82C206.96 43.82 210.41 41.35 210.41 37.24C210.41 34.87 209.1 33.46 206.34 32.57L202.75 31.44C200.68 30.79 199.48 29.96 199.48 28.25C199.48 25.3 201.99 23.72 204.93 23.72C208.06 23.72 209.93 25.37 210.27 27.73H212H212Z" fill="currentColor"></path><path d="M147.5 53.24L148.1 49.67H148.73C148.92 49.67 149.06 49.7 149.17 49.76C149.28 49.82 149.35 49.9 149.39 50.01C149.43 50.12 149.44 50.25 149.41 50.39C149.39 50.53 149.34 50.66 149.26 50.77C149.19 50.88 149.09 50.97 148.96 51.03C148.83 51.09 148.68 51.12 148.5 51.12H147.55L147.44 51.83H148.52C148.85 51.83 149.14 51.77 149.4 51.65C149.65 51.53 149.86 51.36 150.02 51.14C150.18 50.92 150.28 50.67 150.32 50.39C150.37 50.11 150.35 49.86 150.27 49.64C150.18 49.42 150.04 49.25 149.83 49.13C149.62 49 149.35 48.94 149.02 48.94H147.34L146.62 53.24H147.5H147.5ZM144.35 53.11C144.63 52.98 144.86 52.81 145.05 52.58C145.23 52.34 145.35 52.07 145.4 51.76L145.87 48.94H144.98L144.53 51.63C144.5 51.8 144.44 51.95 144.34 52.08C144.24 52.22 144.11 52.32 143.95 52.4C143.8 52.48 143.63 52.52 143.44 52.52C143.27 52.52 143.12 52.49 143.01 52.42C142.89 52.35 142.81 52.25 142.76 52.13C142.71 52 142.7 51.85 142.73 51.69L143.18 48.94H142.3L141.84 51.7C141.79 52.01 141.82 52.29 141.93 52.53C142.04 52.77 142.22 52.96 142.48 53.1C142.73 53.23 143.04 53.3 143.4 53.3C143.76 53.3 144.07 53.24 144.35 53.11M137.82 52.4C137.69 52.33 137.59 52.22 137.52 52.07C137.45 51.93 137.41 51.75 137.41 51.54C137.41 51.32 137.44 51.09 137.51 50.87C137.57 50.66 137.66 50.45 137.78 50.27C137.9 50.09 138.05 49.94 138.23 49.83C138.41 49.72 138.62 49.66 138.86 49.66C139.04 49.66 139.2 49.7 139.33 49.78C139.46 49.85 139.56 49.96 139.63 50.1C139.7 50.25 139.74 50.43 139.74 50.64C139.74 50.85 139.71 51.08 139.65 51.3C139.59 51.52 139.49 51.72 139.37 51.91C139.25 52.09 139.1 52.24 138.92 52.35C138.74 52.46 138.53 52.51 138.29 52.51C138.11 52.51 137.96 52.47 137.82 52.4M139.23 53.08C139.52 52.94 139.77 52.74 139.98 52.49C140.19 52.25 140.35 51.96 140.46 51.64C140.57 51.33 140.63 50.99 140.63 50.64C140.63 50.27 140.55 49.95 140.41 49.69C140.26 49.43 140.06 49.23 139.8 49.09C139.54 48.95 139.24 48.88 138.9 48.88C138.54 48.88 138.21 48.95 137.92 49.1C137.62 49.24 137.38 49.44 137.17 49.68C136.96 49.93 136.8 50.21 136.69 50.53C136.58 50.85 136.53 51.19 136.53 51.54C136.53 51.91 136.6 52.23 136.74 52.49C136.89 52.75 137.09 52.95 137.35 53.09C137.61 53.23 137.91 53.3 138.26 53.3C138.62 53.3 138.94 53.22 139.23 53.08M135.12 53.24L134.37 51.28H133.41L134.14 53.24H135.12H135.12ZM132.62 53.24L133.21 49.67H133.85C134.11 49.67 134.3 49.72 134.42 49.84C134.53 49.95 134.57 50.12 134.53 50.34C134.51 50.48 134.46 50.6 134.39 50.7C134.31 50.8 134.21 50.87 134.09 50.92C133.96 50.97 133.81 50.99 133.63 50.99H132.63L132.51 51.7H133.65C133.99 51.7 134.28 51.65 134.53 51.54C134.78 51.43 134.98 51.28 135.14 51.07C135.3 50.87 135.4 50.62 135.44 50.34C135.49 50.06 135.47 49.81 135.39 49.6C135.3 49.39 135.15 49.23 134.94 49.11C134.74 49 134.47 48.94 134.13 48.94H132.45L131.73 53.24H132.62L132.62 53.24ZM129.29 53.18C129.53 53.1 129.74 52.98 129.93 52.83C130.12 52.67 130.27 52.49 130.4 52.26C130.52 52.04 130.61 51.79 130.66 51.51L130.75 50.95H128.95L128.84 51.62H129.96L129.79 51.56C129.76 51.75 129.69 51.92 129.58 52.06C129.47 52.2 129.33 52.31 129.16 52.39C128.99 52.47 128.8 52.51 128.58 52.51C128.3 52.51 128.08 52.43 127.92 52.26C127.76 52.09 127.68 51.84 127.68 51.52C127.68 51.3 127.72 51.08 127.78 50.86C127.84 50.64 127.94 50.44 128.06 50.26C128.19 50.08 128.34 49.93 128.52 49.83C128.7 49.72 128.91 49.66 129.14 49.66C129.25 49.66 129.36 49.68 129.45 49.71C129.54 49.74 129.61 49.78 129.68 49.84C129.74 49.9 129.79 49.97 129.83 50.05C129.87 50.13 129.9 50.22 129.91 50.33H130.81C130.82 50.11 130.78 49.91 130.7 49.73C130.62 49.55 130.5 49.4 130.35 49.27C130.21 49.15 130.03 49.05 129.83 48.98C129.62 48.91 129.4 48.88 129.16 48.88C128.8 48.88 128.48 48.95 128.19 49.1C127.9 49.24 127.65 49.44 127.44 49.68C127.23 49.93 127.07 50.22 126.96 50.54C126.85 50.85 126.79 51.19 126.79 51.54C126.79 51.89 126.86 52.22 127.01 52.48C127.15 52.74 127.35 52.94 127.61 53.08C127.87 53.22 128.18 53.29 128.54 53.29C128.81 53.29 129.06 53.25 129.29 53.17M122.15 53.18C122.38 53.1 122.6 52.98 122.78 52.83C122.97 52.67 123.13 52.49 123.25 52.26C123.38 52.04 123.47 51.79 123.51 51.51L123.61 50.95H121.81L121.7 51.62H122.82L122.64 51.56C122.61 51.75 122.54 51.92 122.44 52.06C122.33 52.2 122.19 52.31 122.02 52.39C121.85 52.47 121.66 52.51 121.44 52.51C121.16 52.51 120.94 52.43 120.78 52.26C120.62 52.09 120.54 51.84 120.54 51.52C120.54 51.3 120.57 51.08 120.64 50.86C120.7 50.64 120.8 50.44 120.92 50.26C121.04 50.08 121.19 49.93 121.38 49.83C121.56 49.72 121.76 49.66 122 49.66C122.11 49.66 122.21 49.68 122.3 49.71C122.39 49.74 122.47 49.78 122.53 49.84C122.6 49.9 122.65 49.97 122.69 50.05C122.73 50.13 122.75 50.22 122.77 50.33H123.67C123.67 50.11 123.64 49.91 123.56 49.73C123.47 49.55 123.36 49.4 123.21 49.27C123.06 49.15 122.89 49.05 122.68 48.98C122.48 48.91 122.26 48.88 122.02 48.88C121.66 48.88 121.33 48.95 121.04 49.1C120.75 49.24 120.5 49.44 120.3 49.68C120.09 49.93 119.93 50.22 119.82 50.54C119.7 50.85 119.65 51.19 119.65 51.54C119.65 51.89 119.72 52.22 119.86 52.48C120 52.74 120.2 52.94 120.47 53.08C120.73 53.22 121.04 53.29 121.4 53.29C121.66 53.29 121.91 53.25 122.15 53.17M115.13 53.24L115.46 51.26C115.48 51.16 115.5 51.04 115.51 50.89C115.53 50.74 115.55 50.57 115.57 50.38C115.59 50.19 115.61 49.98 115.64 49.77H115.53C115.61 50.01 115.68 50.21 115.74 50.38C115.8 50.55 115.85 50.71 115.9 50.84C115.96 50.98 116.02 51.12 116.08 51.27L116.99 53.24H117.97L118.69 48.94H117.78L117.44 51C117.42 51.12 117.4 51.26 117.38 51.43C117.36 51.59 117.34 51.77 117.32 51.95C117.3 52.13 117.29 52.29 117.28 52.45H117.36C117.32 52.25 117.27 52.07 117.22 51.9C117.17 51.74 117.12 51.6 117.07 51.47C117.02 51.34 116.97 51.22 116.93 51.12L115.93 48.94H114.95L114.23 53.24H115.13V53.24ZM112.59 48.94L111.87 53.24H112.76L113.47 48.94H112.59ZM106.53 53.24L106.87 51.21C106.89 51.12 106.9 51 106.92 50.86C106.94 50.72 106.97 50.57 106.99 50.4C107.01 50.24 107.03 50.08 107.06 49.91C107.08 49.75 107.11 49.59 107.13 49.45H107.06C107.08 49.67 107.1 49.89 107.13 50.12C107.15 50.35 107.18 50.56 107.2 50.75C107.23 50.94 107.25 51.1 107.27 51.22L107.66 53.24H108.41L109.46 51.22C109.5 51.13 109.56 51.02 109.62 50.88C109.68 50.75 109.75 50.61 109.82 50.45C109.89 50.29 109.96 50.12 110.03 49.95C110.11 49.78 110.18 49.61 110.24 49.45H110.19C110.16 49.59 110.14 49.74 110.1 49.91C110.07 50.07 110.04 50.23 110.01 50.4C109.98 50.56 109.95 50.71 109.92 50.85C109.9 51 109.87 51.12 109.86 51.22L109.52 53.24H110.41L111.13 48.94H109.76L108.74 50.91C108.7 51.01 108.65 51.13 108.58 51.27C108.52 51.42 108.46 51.58 108.39 51.74C108.33 51.91 108.26 52.08 108.2 52.24C108.14 52.4 108.09 52.54 108.05 52.65H108.22C108.22 52.54 108.21 52.4 108.2 52.24C108.2 52.08 108.19 51.92 108.18 51.75C108.17 51.58 108.16 51.42 108.14 51.28C108.13 51.13 108.12 51.01 108.1 50.92L107.73 48.94H106.37L105.66 53.24H106.53L106.53 53.24ZM103.68 52.24L103.79 51.55H101.49L101.37 52.24H103.68ZM101.3 53.24L102.31 51.16C102.44 50.9 102.57 50.6 102.7 50.28C102.83 49.96 102.97 49.61 103.13 49.24H102.94C102.97 49.62 103 49.97 103.03 50.29C103.07 50.62 103.1 50.91 103.14 51.16L103.49 53.24H104.44L103.64 48.94H102.48L100.29 53.24H101.3H101.3ZM98.28 53.18C98.52 53.1 98.73 52.98 98.92 52.83C99.1 52.67 99.26 52.49 99.39 52.26C99.51 52.04 99.6 51.79 99.64 51.51L99.74 50.95H97.94L97.83 51.62H98.95L98.78 51.56C98.75 51.75 98.68 51.92 98.57 52.06C98.46 52.2 98.32 52.31 98.15 52.39C97.98 52.47 97.79 52.51 97.57 52.51C97.29 52.51 97.07 52.43 96.91 52.26C96.75 52.09 96.67 51.84 96.67 51.52C96.67 51.3 96.7 51.08 96.77 50.86C96.83 50.64 96.93 50.44 97.05 50.26C97.17 50.08 97.33 49.93 97.51 49.83C97.69 49.72 97.89 49.66 98.13 49.66C98.24 49.66 98.35 49.68 98.43 49.71C98.52 49.74 98.6 49.78 98.66 49.84C98.73 49.9 98.78 49.97 98.82 50.05C98.86 50.13 98.88 50.22 98.9 50.33H99.8C99.8 50.11 99.77 49.91 99.69 49.73C99.61 49.55 99.49 49.4 99.34 49.27C99.19 49.15 99.02 49.05 98.81 48.98C98.61 48.91 98.39 48.88 98.15 48.88C97.79 48.88 97.47 48.95 97.18 49.1C96.88 49.24 96.64 49.44 96.43 49.68C96.22 49.93 96.06 50.22 95.95 50.54C95.84 50.85 95.78 51.19 95.78 51.54C95.78 51.89 95.85 52.22 95.99 52.48C96.14 52.74 96.34 52.94 96.6 53.08C96.86 53.22 97.17 53.29 97.53 53.29C97.79 53.29 98.04 53.25 98.28 53.17M92.14 53.24L92.27 52.51H90.25L90.43 51.43H92.29L92.41 50.71H90.56L90.73 49.67H92.73L92.86 48.94H89.97L89.25 53.24H92.15H92.14ZM87.95 53.24L88.07 52.51H86.21L86.8 48.94H85.92L85.2 53.24H87.95ZM83.56 48.94L82.85 53.24H83.73L84.45 48.94H83.56ZM79.71 49.66H80.45C80.66 49.66 80.81 49.7 80.9 49.79C80.99 49.88 81.02 49.99 81 50.13C80.97 50.26 80.93 50.37 80.85 50.46C80.77 50.55 80.68 50.62 80.56 50.67C80.45 50.72 80.33 50.75 80.21 50.75H79.53L79.71 49.66V49.66ZM79.43 51.35H80.24C80.39 51.35 80.51 51.37 80.61 51.42C80.7 51.46 80.77 51.53 80.82 51.61C80.86 51.7 80.87 51.8 80.85 51.91C80.82 52.09 80.74 52.23 80.59 52.34C80.45 52.46 80.24 52.51 79.98 52.51H79.24L79.43 51.35ZM80.08 53.24C80.41 53.24 80.69 53.19 80.92 53.09C81.15 52.99 81.34 52.86 81.47 52.69C81.61 52.52 81.69 52.33 81.73 52.11C81.77 51.89 81.75 51.7 81.69 51.53C81.62 51.37 81.52 51.25 81.39 51.16C81.26 51.06 81.12 51.02 80.96 51.01V50.98C81.11 50.94 81.25 50.89 81.39 50.81C81.52 50.73 81.63 50.64 81.72 50.51C81.81 50.39 81.87 50.26 81.9 50.09C81.93 49.87 81.91 49.67 81.83 49.5C81.75 49.33 81.61 49.19 81.41 49.09C81.21 48.99 80.96 48.94 80.64 48.94H78.95L78.23 53.24H80.08V53.24ZM74.47 52.4C74.34 52.33 74.24 52.22 74.17 52.07C74.1 51.93 74.06 51.75 74.06 51.54C74.06 51.32 74.09 51.09 74.15 50.87C74.21 50.66 74.31 50.45 74.43 50.27C74.55 50.09 74.7 49.94 74.88 49.83C75.06 49.72 75.27 49.66 75.51 49.66C75.69 49.66 75.84 49.7 75.98 49.78C76.11 49.85 76.21 49.96 76.28 50.1C76.35 50.25 76.38 50.43 76.38 50.64C76.38 50.85 76.35 51.08 76.29 51.3C76.23 51.52 76.14 51.72 76.02 51.91C75.9 52.09 75.75 52.24 75.57 52.35C75.39 52.46 75.18 52.51 74.94 52.51C74.76 52.51 74.6 52.47 74.47 52.4M75.88 53.08C76.17 52.94 76.42 52.74 76.63 52.49C76.83 52.25 76.99 51.96 77.11 51.64C77.22 51.33 77.27 50.99 77.27 50.64C77.27 50.27 77.2 49.95 77.05 49.69C76.91 49.43 76.7 49.23 76.44 49.09C76.19 48.95 75.89 48.88 75.54 48.88C75.18 48.88 74.86 48.95 74.56 49.1C74.27 49.24 74.02 49.44 73.81 49.68C73.61 49.93 73.45 50.21 73.34 50.53C73.23 50.85 73.17 51.19 73.17 51.54C73.17 51.91 73.25 52.23 73.39 52.49C73.54 52.75 73.74 52.95 74 53.09C74.26 53.23 74.56 53.3 74.9 53.3C75.26 53.3 75.59 53.22 75.88 53.08M67.62 53.24L67.96 51.21C67.98 51.12 67.99 51 68.01 50.86C68.03 50.72 68.06 50.57 68.08 50.4C68.1 50.24 68.13 50.08 68.15 49.91C68.17 49.75 68.2 49.59 68.22 49.45H68.15C68.17 49.67 68.19 49.89 68.22 50.12C68.24 50.35 68.27 50.56 68.29 50.75C68.32 50.94 68.34 51.1 68.36 51.22L68.75 53.24H69.5L70.55 51.22C70.59 51.13 70.65 51.02 70.71 50.88C70.77 50.75 70.84 50.61 70.91 50.45C70.98 50.29 71.05 50.12 71.13 49.95C71.2 49.78 71.27 49.61 71.33 49.45H71.28C71.25 49.59 71.23 49.74 71.19 49.91C71.16 50.07 71.13 50.23 71.1 50.4C71.07 50.56 71.04 50.71 71.01 50.85C70.99 51 70.96 51.12 70.95 51.22L70.61 53.24H71.5L72.22 48.94H70.85L69.83 50.91C69.79 51.01 69.74 51.13 69.68 51.27C69.61 51.42 69.55 51.58 69.48 51.74C69.42 51.91 69.35 52.08 69.29 52.24C69.23 52.4 69.18 52.54 69.14 52.65H69.31C69.31 52.54 69.3 52.4 69.3 52.24C69.29 52.08 69.28 51.92 69.27 51.75C69.26 51.58 69.25 51.42 69.23 51.28C69.22 51.13 69.21 51.01 69.19 50.92L68.82 48.94H67.46L66.75 53.24H67.62L67.62 53.24Z" fill="currentColor"></path></g><defs><clipPath id="leovegas-clip0_1099_510"><rect width="212" height="63" fill="white"></rect></clipPath></defs></g></symbol>
+  <symbol id="logo-kindred" viewBox="0 354.44 595.28 141"><g fill="currentColor"><rect x="79.44" y="362.97" fill="currentColor" width="14.83" height="115.51"/><polygon fill="currentColor" points="128.58,400.21 146.18,400.21 111.52,436.89 95.16,436.89 "/><polygon fill="currentColor" points="95.16,436.89 111.52,436.89 149.38,478.47 130.02,478.47 "/><polygon fill="currentColor" points="45.14,400.21 27.54,400.21 62.19,436.89 78.56,436.89 "/><polygon fill="currentColor" points="62.19,436.89 24.34,478.47 43.7,478.47 78.56,436.89 "/><polygon fill="currentColor" points="233.62,478.48 222.3,478.48 210.56,457.06 202.19,466.5 202.19,472.49 208.59,472.49 
+  	208.59,478.48 187.75,478.48 187.75,472.49 194.73,472.49 194.73,424.57 187.75,424.57 187.75,418.58 202.19,418.58 
+  	202.19,457.96 217.46,440.16 212.53,440.16 212.53,434.17 231.82,434.17 231.82,440.16 225.66,440.16 
+  	215.4,451.64 226.89,472.49 233.62,472.49 "/><path fill="currentColor" d="M273.62,478.48H252.2v-5.99h7.14V440.16h-7.14v-5.99h14.61v38.32h6.81V478.48z M258.93,419.65h8.29
+  	v8.37h-8.29V419.65z"/><path fill="currentColor" d="M341.37,478.48h-20.43v-5.99h6.4v-27.4c0-3.28-1.31-4.51-5.74-4.51
+  	c-6.56,0-9.93,1.48-14.28,4.43v27.48h6.48v5.99h-20.92v-5.99h6.97V440.16h-6.97v-5.99h14.44v6.15
+  	c3.94-3.85,7.14-6.56,15.1-6.56c8.86,0,12.39,3.53,12.39,11.08v27.65h6.56V478.48L341.37,478.48z"/><path fill="currentColor" d="M403.95,478.48h-14.11v-6.23c-3.86,3.85-7.14,6.56-15.59,6.56c-9.44,0-12.96-3.53-12.96-11.24
+  	v-22.48c0-7.71,3.53-11.24,12.96-11.24c8.45,0,11.73,2.71,15.59,6.56V424.57h-8.04v-5.99h15.51v53.91h6.65
+  	L403.95,478.48L403.95,478.48z M389.84,445.08c-4.35-2.95-7.71-4.43-14.77-4.43c-5.09,0-6.32,1.23-6.32,4.43v22.48
+  	c0,3.2,1.23,4.43,6.32,4.43c7.06,0,10.42-1.48,14.77-4.43V445.08z"/><path fill="currentColor" d="M453.4,441.31h-2.87c-5.25,0-8.94,1.89-12.96,4.35v26.83h8.61v5.99h-23.06v-5.99h6.97v-32.25
+  	l-6.97-.08v-5.99h14.44v6.56c3.61-3.53,7.14-6.56,13.62-6.56h2.22V441.31z"/><path fill="currentColor" d="M480.67,467.73c0,3.12,1.31,4.43,4.43,4.43h11c3.2,0,4.43-1.31,4.43-4.43v-3.28h7.47v3.03
+  	c0,7.47-3.53,10.99-10.99,10.99h-12.8c-7.47,0-10.99-3.52-10.99-10.99v-22.32c0-7.47,3.53-11,10.99-11h12.8
+  	c7.47,0,10.99,3.53,10.99,11v12.96h-27.32L480.67,467.73L480.67,467.73z M485.1,440.49
+  	c-3.12,0-4.43,1.31-4.43,4.43v7.63h19.86v-7.63c0-3.12-1.23-4.43-4.43-4.43H485.1z"/><path fill="currentColor" d="M571.55,478.48H557.44v-6.23c-3.85,3.85-7.14,6.56-15.59,6.56c-9.44,0-12.96-3.53-12.96-11.24
+  	v-22.48c0-7.71,3.53-11.24,12.96-11.24c8.45,0,11.73,2.71,15.59,6.56V424.57h-8.04v-5.99h15.51v53.91h6.65V478.48z
+  	 M557.44,445.08c-4.35-2.95-7.71-4.43-14.77-4.43c-5.09,0-6.32,1.23-6.32,4.43v22.48c0,3.2,1.23,4.43,6.32,4.43
+  	c7.06,0,10.42-1.48,14.77-4.43V445.08z"/></g></symbol>
+  <symbol id="logo-ibm" viewBox="0 0 1075 401.15"><g fill="currentColor"><g id="ibm-IBM_logo" fill="currentColor"><g id="ibm-I"><rect y="373.17" width="194.43" height="27.93"/><rect y="319.83" width="194.43" height="27.93"/><rect x="55.47" y="266.54" width="83.4" height="27.93"/><rect x="55.47" y="213.25" width="83.4" height="27.93"/><rect x="55.47" y="159.96" width="83.4" height="27.93"/><rect x="55.47" y="106.58" width="83.4" height="27.93"/><rect y="53.29" width="194.43" height="27.93"/><rect width="194.43" height="27.93"/></g><g id="ibm-B"><path d="m222.17 400.85 207.11 .3c27.73 0 52.79-10.7 71.51-27.93h-278.62z"/><path d="m222.17 347.76h299.03c5.05-8.62 8.81-18.03 11.09-27.93h-310.12z"/><rect x="277.73" y="266.54" width="83.3" height="27.93"/><path d="m444.43 266.54v27.93h90.93c0-9.61-1.29-19.02-3.76-27.93z"/><path d="m497.92 213.25h-220.19v27.93h243.46c-6.34-10.7-14.16-20.11-23.28-27.93z"/><path d="m277.73 159.96v27.93h220.19c9.31-7.83 17.14-17.23 23.28-27.93z"/><rect x="277.73" y="106.58" width="83.3" height="27.93"/><path d="m444.43 134.51h87.16c2.48-8.91 3.76-18.32 3.76-27.93h-90.93z"/><path d="m521.2 53.29h-299.03v27.93h310.12c-2.58-9.9-6.34-19.31-11.09-27.93z"/><path d="m429.28 0h-207.11v27.93h278.53c-18.62-17.23-43.88-27.93-71.41-27.93z"/></g><g id="ibm-M"><polygon points="555.57 81.22 742.67 81.22 733.06 53.29 555.57 53.29"/><polygon points="555.57 27.93 724.25 27.93 714.64 0 555.57 0"/><polygon points="861.03 401.17 861.03 373.24 1e3 373.24 1e3 401.17" stroke-width="1"/><polygon points="861.03 347.76 861.03 319.83 1e3 319.83 1e3 347.76"/><polygon points="777.73 182.54 769.91 159.96 694.43 159.96 611.03 159.96 611.03 187.89 694.43 187.89 694.43 162.24 703.25 187.89 852.22 187.89 861.03 162.24 861.03 187.89 944.43 187.89 944.43 159.96 861.03 159.96 785.56 159.96"/><polygon points="944.43 106.58 803.98 106.58 794.37 134.51 944.43 134.51"/><polygon points="1e3 27.93 1e3 0 840.93 0 831.32 27.93"/><polygon points="768.13 373.22 777.73 400.85 787.34 373.22"/><polygon points="749.5 319.83 759.31 347.76 796.16 347.76 806.06 319.83"/><polygon points="730.78 266.54 740.59 294.47 814.88 294.47 824.68 266.54"/><polygon points="721.97 241.18 833.6 241.18 843.11 213.25 712.36 213.25"/><polygon points="611.03 134.51 761.09 134.51 751.49 106.58 611.03 106.58"/><polygon points="1e3 53.29 822.4 53.29 812.9 81.22 1e3 81.22"/><rect x="555.57" y="373.22" width="138.97" height="27.93"/><rect x="555.57" y="319.83" width="138.97" height="27.93"/><rect x="611.03" y="266.54" width="83.4" height="27.93"/><rect x="611.03" y="213.25" width="83.4" height="27.93"/><rect x="861.03" y="213.25" width="83.4" height="27.93"/><rect x="861.03" y="266.54" width="83.4" height="27.93"/></g><path id="ibm-Registered" d="m1052 357.15a22 22 0 0 0-22 22 22 22 0 0 0 22 22 22 22 0 0 0 22-22 22 22 0 0 0-22-22zm0 4a18 18 0 0 1 18 18 18 18 0 0 1-18 18 18 18 0 0 1-18-18 18 18 0 0 1 18-18zm-9.35 6.79v22.41h5.45v-7.73h3.1l4.16 7.73h5.98l-5.02-8.58c2.46-.96 4.06-3.22 4.06-6.75 0-4.08-2.56-7.08-7.58-7.08zm5.45 4.29h4.05c1.71 0 2.67 .75 2.67 2.36v1.61c0 1.61-.96 2.36-2.67 2.36h-4.05z"/></g></g></symbol>
+  <symbol id="logo-atos" viewBox="0 0 1001.8 332.1"><g fill="currentColor"><g><g><g><g><path fill="currentColor" d="M899.2,137.8c-52.4-16.9-67.3-31.4-67.3-46.9c0-21.8,25.8-34.7,63.4-34.7c14.5,0,25,1.3,32.3,2.9l-0.2,43.1
+  					l49.4,0.9l3.5-86.6C956.9,10.8,921,4.1,891,4.1c-69.4,0-124.2,32.9-124.2,92.4c0,56.6,38.1,77.5,105.5,98.4
+  					c52,16.2,57.5,28.6,57.5,44.6c0,18.3-25.6,32-58.3,32c-33.5,0-70.7-11.4-93.5-20.8c-6.2,13.3-19.5,35.6-28.2,48.3
+  					c33.8,18.6,74.1,28.7,119.4,28.7c69.1,0,127.8-32.7,127.8-97.6C996.9,179.8,966.7,159.4,899.2,137.8"/><path fill="currentColor" d="M216.3,6.6H82V46h33.7l-84,237.1H4.9v39.3h112.7V283H91.1l15.3-43.2h122.1l15.3,43.2H219v39.4h120.5V283
+  					h-25.1L216.3,6.6z M123.6,190.6l43.7-123.4l43.8,123.4H123.6z"/><path fill="currentColor" d="M675.1,60.4L675.1,60.4c-16.6-7.1-34.9-11-54.2-11c-4.9,0-9.8,0.3-14.6,0.7c-16.8,23-26.8,51.4-26.8,82.1
+  					c0,57.7,35.1,107.2,85.1,128.3c-12.6,8.7-27.6,13.8-43.7,13.8c-44.4,0-80.4-38.4-80.4-85.7c0-20.4,6.7-39.1,17.9-53.9
+  					c0-21.7,7.7-61.2,19.4-78.5c-56.2,18.1-96.2,71.4-96.2,132.4c0,24.3,6.2,47,17.1,66.9c-13.2,13.9-31,21.8-48,21.8
+  					c-23,0-39.6-18-39.6-45V108.5h71.8V59.2h-71.8V5.9h-64.5v53.3h-47.3v49.3h47.3v130.2c0,66.9,46.6,88.8,91.9,88.8
+  					c37.9,0,68.8-17.9,85.9-38.5c25,24,59,38.8,96.5,38.8c75.9,0,139.3-62,139.3-139.2C760.2,131,725.1,81.5,675.1,60.4
+  					 M697.4,214.9c-34-10-59-43.1-59-82.6c0-9.1,1.4-17.9,3.9-26.2c34,10,59,43.1,59,82.6C701.3,197.8,699.9,206.6,697.4,214.9"/></g></g></g></g></g></symbol>
+  <symbol id="logo-accenture" viewBox="-1.59 -1.59 203.91 56.09"><g fill="currentColor"><defs
+       id="accenture-defs8853" /><path
+       d="m 117,0 v 5.98 l 11.56,4.52 -11.56,4.3 v 6.15 l 19.79,-8.02 V 7.97 Z"
+       style="fill:currentColor;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33"
+       id="accenture-path8760" /><path
+       d="m 185.77,38.17 h 8.68 C 194.32,34.76 192.77,33.3 190.2,33.3 c -2.04,0 -3.9,1.11 -4.43,4.87 m 4.61,14.74 c -6.69,0 -11.25,-3.99 -11.25,-11.69 V 40.78 c 0,-7.75 4.83,-12 11.02,-12 5.76,0 10.58,3.23 10.58,10.89 v 2.79 h -15.05 c .27,4.16 2.03,5.76 4.83,5.76 2.48,0 3.81,-1.33 4.25,-3.01 h 5.98 c -.71,4.38 -4.29,7.7 -10.36,7.7 M 163.67,29.27 h 6.46 v 4.25 c 1.37,-3.1 3.54,-4.56 6.95,-4.56 v 6.37 c -4.38,0 -6.95,1.33 -6.95,5.18 v 11.91 h -6.46 z M 158.98,52.43 h -6.47 v -3.41 c -1.11,2.21 -3.28,3.9 -6.73,3.9 -4.16,0 -7.22,-2.52 -7.22,-7.97 V 29.27 h 6.51 v 14.7 c 0,2.66 1.06,3.9 3.37,3.9 2.26,0 4.07,-1.42 4.07,-4.29 V 29.27 H 158.98 Z M 130.19,22.27 v 7 h 4.43 v 4.82 h -4.43 v 10.98 c 0,1.73 .8,2.53 2.3,2.53 .93,0 1.64,-.13 2.26,-.4 v 5.05 c -.75,.22 -2.04,.49 -3.63,.49 -5.05,0 -7.44,-2.3 -7.44,-7 V 34.09 h -2.7 V 29.27 h 2.7 v -4.34 z m -32.55,7 h 6.46 v 3.45 c 1.15,-2.17 3.45,-3.94 7,-3.94 4.21,0 7,2.52 7,8.15 v 15.5 h -6.47 V 37.9 c 0,-2.7 -1.11,-3.9 -3.45,-3.9 -2.26,0 -4.07,1.37 -4.07,4.3 v 14.13 h -6.46 z m -18.95,8.9 h 8.68 c -.13,-3.41 -1.68,-4.87 -4.25,-4.87 -2.04,0 -3.9,1.11 -4.43,4.87 m 4.61,14.74 c -6.69,0 -11.25,-3.99 -11.25,-11.69 V 40.78 c 0,-7.75 4.83,-12 11.03,-12 5.76,0 10.58,3.23 10.58,10.89 v 2.79 h -15.06 c .27,4.16 2.04,5.76 4.83,5.76 2.48,0 3.81,-1.33 4.25,-3.01 h 5.98 c -.71,4.38 -4.3,7.7 -10.36,7.7 m -24.27,0 c -6.42,0 -11.07,-3.99 -11.07,-11.82 v -.31 c 0,-7.84 4.96,-12 11.11,-12 5.27,0 9.61,2.66 10.14,8.72 h -6.2 c -.4,-2.26 -1.55,-3.72 -3.81,-3.72 -2.75,0 -4.65,2.17 -4.65,6.73 v .71 c 0,4.69 1.68,6.82 4.69,6.82 2.21,0 3.85,-1.64 4.21,-4.16 h 5.89 c -.44,5.27 -4.03,9.03 -10.32,9.03 m -24.09,0 c -6.42,0 -11.07,-3.99 -11.07,-11.82 v -.31 c 0,-7.84 4.96,-12 11.11,-12 5.27,0 9.61,2.66 10.14,8.72 h -6.2 c -.4,-2.26 -1.55,-3.72 -3.81,-3.72 -2.75,0 -4.65,2.17 -4.65,6.73 v .71 c 0,4.69 1.68,6.82 4.69,6.82 2.21,0 3.85,-1.64 4.21,-4.16 h 5.89 c -.44,5.27 -4.03,9.03 -10.32,9.03 m -21.12,-8.19 v -2.21 h -2.57 c -3.19,0 -4.82,.89 -4.82,2.97 v .22 c 0,1.59 .97,2.7 3.14,2.7 2.21,0 4.25,-1.24 4.25,-3.67 M 7.62,52.91 C 3.45,52.91 0,50.79 0,46.09 V 45.83 c 0,-5.71 4.96,-7.57 10.94,-7.57 h 2.88 v -1.11 c 0,-2.3 -1.02,-3.72 -3.41,-3.72 -2.17,0 -3.32,1.24 -3.5,3.01 H .71 c .44,-5.14 4.52,-7.66 10.01,-7.66 5.58,0 9.56,2.39 9.56,8.15 V 52.43 H 13.95 v -2.66 c -1.11,1.68 -3.23,3.14 -6.33,3.14"
+       style="fill:currentColor;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.33"
+       id="accenture-path8772" /></g></symbol>
+</svg>
+
+<a class="skip" href="#work">Skip to work</a>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-name">Kulwant Singh</span>
+      <span class="brand-where"><svg class="i"><use href="#i-pin"/></svg>Stockholm, Sweden</span>
     </a>
-
-    <nav class="nav-pill" aria-label="Sections">
-      <a href="#projects"><svg class="icon" data-icon="grid" width="14" height="14"></svg><span>Projects</span></a>
-      <a href="#exploring"><svg class="icon" data-icon="cpu" width="14" height="14"></svg><span>Exploring</span></a>
-      <a href="#repositories"><svg class="icon" data-icon="folder" width="14" height="14"></svg><span>Repositories</span></a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+      <div class="nav-actions">
+        <a href="cv.pdf" target="_blank" rel="noopener" class="cv">CV</a>
+        <button class="theme" type="button" aria-label="Switch to dark mode">
+          <svg class="i moon"><use href="#i-moon"/></svg>
+          <svg class="i sun"><use href="#i-sun"/></svg>
+        </button>
+      </div>
     </nav>
-
-    <div class="header-actions">
-      <a href="cv.pdf" target="_blank" rel="noopener" class="btn-sm outline"><svg class="icon" data-icon="file" width="14" height="14"></svg><span>CV (PDF)</span></a>
-      <a href="https://github.com/imkulwant" target="_blank" rel="noopener" class="btn-sm dark"><svg class="icon" data-icon="github" width="14" height="14"></svg><span class="hide-xs">GitHub</span></a>
-    </div>
   </div>
 </header>
 
-<main>
-  <div class="container">
+<main id="top">
 
-    <!-- Hero -->
-    <div class="hero">
-      <div class="badge-hero"><span>⚙️ Backend &amp; Distributed Systems Engineer</span></div>
-      <h1>Kulwant Singh</h1>
-      <p class="hero-bio">
-        10+ years building and scaling resilient distributed systems and microservices,
-        mostly backend, cloud-native and JVM-based. Based in Stockholm, Sweden.
-      </p>
-      <div class="stack-chips">
-        <span class="chip">Java</span>
-        <span class="chip">Kotlin</span>
-        <span class="chip">Spring Boot</span>
-        <span class="chip">JPA / Hibernate</span>
-        <span class="chip">Kafka</span>
-        <span class="chip">Kubernetes</span>
-        <span class="chip">Docker</span>
-        <span class="chip">MySQL</span>
-        <span class="chip">MongoDB</span>
-        <span class="chip">Redis</span>
-      </div>
-      <div class="hero-actions">
-        <a href="https://github.com/imkulwant" target="_blank" rel="noopener" class="btn-pill primary"><span>🐙 GitHub Profile</span></a>
-        <a href="https://linkedin.com/in/imkulwant" target="_blank" rel="noopener" class="btn-pill outline"><span>💼 LinkedIn</span></a>
-        <a href="cv.pdf" target="_blank" rel="noopener" class="btn-pill outline"><span>📄 View CV / Resume</span></a>
+  <section class="hero wrap">
+    <p class="eyebrow">Kulwant Singh <span class="role">· Senior Software Engineer</span></p>
+    <h1>I build backend systems that <em>stay correct under load.</em></h1>
+    <p class="stack">Java · Kotlin · Spring Boot · Kafka · Kubernetes · Distributed Systems</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:singh.kulwant@gmx.com"><svg class="i"><use href="#i-mail"/></svg>Email me</a>
+      <a class="btn" href="https://linkedin.com/in/imkulwant" target="_blank" rel="noopener"><svg class="i"><use href="#i-linkedin"/></svg>LinkedIn</a>
+      <a class="btn" href="https://github.com/imkulwant" target="_blank" rel="noopener"><svg class="i"><use href="#i-github"/></svg>GitHub</a>
+      <a class="btn" href="cv.pdf" target="_blank" rel="noopener"><svg class="i"><use href="#i-file"/></svg>CV</a>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="worked-h">
+    <div class="worked">
+      <h2 id="worked-h" class="worked-label">10+ years at</h2>
+      <div class="marquee">
+        <div class="track">
+          <ul class="logos">
+            <li><svg class="logo" width="133" height="20" role="img" aria-label="FDJ United"><use href="#logo-fdj"/></svg></li>
+            <li><svg class="logo" width="121" height="36" role="img" aria-label="LeoVegas"><use href="#logo-leovegas"/></svg></li>
+            <li><svg class="logo" width="110" height="26" role="img" aria-label="Kindred"><use href="#logo-kindred"/></svg></li>
+            <li><svg class="logo" width="70" height="26" role="img" aria-label="IBM"><use href="#logo-ibm"/></svg></li>
+            <li><svg class="logo" width="66" height="22" role="img" aria-label="Atos Syntel"><use href="#logo-atos"/></svg></li>
+            <li><svg class="logo" width="109" height="30" role="img" aria-label="Accenture"><use href="#logo-accenture"/></svg></li>
+          </ul>
+          <ul class="logos" aria-hidden="true">
+            <li><svg class="logo" width="133" height="20" aria-hidden="true" focusable="false"><use href="#logo-fdj"/></svg></li>
+            <li><svg class="logo" width="121" height="36" aria-hidden="true" focusable="false"><use href="#logo-leovegas"/></svg></li>
+            <li><svg class="logo" width="110" height="26" aria-hidden="true" focusable="false"><use href="#logo-kindred"/></svg></li>
+            <li><svg class="logo" width="70" height="26" aria-hidden="true" focusable="false"><use href="#logo-ibm"/></svg></li>
+            <li><svg class="logo" width="66" height="22" aria-hidden="true" focusable="false"><use href="#logo-atos"/></svg></li>
+            <li><svg class="logo" width="109" height="30" aria-hidden="true" focusable="false"><use href="#logo-accenture"/></svg></li>
+          </ul>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Featured projects -->
-    <section id="projects" class="section">
-      <div class="section-head">
-        <h2><span class="blue">Featured</span> Backend Projects</h2>
-        <p>Distributed systems, microservices and developer tooling on the JVM</p>
-      </div>
+  <section id="work" class="section wrap">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <p>Things I build outside my day job</p>
+    </div>
 
-      <div class="grid">
-        <div class="card featured">
-          <div>
-            <div class="card-head">
-              <div class="card-top">
-                <svg class="icon" data-icon="server" width="20" height="20"></svg>
-                <span class="tag solid">Payments · Kafka</span>
-              </div>
-              <h3>payment-system</h3>
-            </div>
-            <div class="card-body">
-              <p>Event-driven payment processing system using Kafka and MySQL, implementing the authorize-then-capture pattern.</p>
-            </div>
-          </div>
-          <div class="card-foot">
-            <a href="https://github.com/imkulwant/payment-system" target="_blank" rel="noopener" class="card-link solid"><svg class="icon" data-icon="github" width="14" height="14"></svg>View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div>
-            <div class="card-head">
-              <div class="card-top">
-                <svg class="icon" data-icon="server" width="18" height="18"></svg>
-                <span class="tag">Java · Gateway</span>
-              </div>
-              <h3>api-gateway</h3>
-            </div>
-            <div class="card-body">
-              <p>Spring Cloud Gateway service with Redis-based rate limiting, Resilience4j circuit breaking and distributed tracing via OpenTelemetry.</p>
-            </div>
-          </div>
-          <div class="card-foot">
-            <a href="https://github.com/imkulwant/api-gateway" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div>
-            <div class="card-head">
-              <div class="card-top">
-                <svg class="icon" data-icon="server" width="18" height="18"></svg>
-                <span class="tag">Kotlin · Service</span>
-              </div>
-              <h3>url-shortener</h3>
-            </div>
-            <div class="card-body">
-              <p>Distributed URL shortener that turns long URLs into encrypted short codes, built with Spring Boot, MongoDB and Redis.</p>
-            </div>
-          </div>
-          <div class="card-foot">
-            <a href="https://github.com/imkulwant/url-shortener" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div>
-            <div class="card-head">
-              <div class="card-top">
-                <svg class="icon" data-icon="server" width="18" height="18"></svg>
-                <span class="tag">Java · Microservice</span>
-              </div>
-              <h3>wallet-service</h3>
-            </div>
-            <div class="card-body">
-              <p>Spring Boot microservice for player wallets, covering authentication, balance, credit/debit operations and transaction history.</p>
-            </div>
-          </div>
-          <div class="card-foot">
-            <a href="https://github.com/imkulwant/wallet-service" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div>
-            <div class="card-head">
-              <div class="card-top">
-                <svg class="icon" data-icon="box" width="18" height="18"></svg>
-                <span class="tag">Java · Library</span>
-              </div>
-              <h3>crudify</h3>
-            </div>
-            <div class="card-body">
-              <p>Library that generates CRUD REST APIs for Spring Boot. Annotate a JPA entity with @CrudifyEntity and the endpoints are ready.</p>
-            </div>
-          </div>
-          <div class="card-foot">
-            <a href="https://github.com/imkulwant/crudify" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div>
-            <div class="card-head">
-              <div class="card-top">
-                <svg class="icon" data-icon="layers" width="18" height="18"></svg>
-                <span class="tag">Infra · Docker</span>
-              </div>
-              <h3>homelab-platform</h3>
-            </div>
-            <div class="card-body">
-              <p>Self-hosted infrastructure platform running Nginx, Prometheus, Grafana, MySQL, Redis and Portainer, orchestrated with Docker Compose.</p>
-            </div>
-          </div>
-          <div class="card-foot">
-            <a href="https://github.com/imkulwant/homelab-platform" target="_blank" rel="noopener" class="card-link"><svg class="icon" data-icon="external" width="14" height="14"></svg>View on GitHub</a>
-          </div>
+    <article class="case">
+      <div>
+        <p class="kicker">Event-driven payments</p>
+        <h3>payment-system</h3>
+        <p class="lede">A payment pipeline built the way real processors work: authorise first, capture later, and keep an audit trail of every state change.</p>
+        <ul class="points">
+          <li><strong>Idempotency keys</strong> on every request, so a retried call returns the same payment instead of creating a new one.</li>
+          <li><strong>Kafka between the steps</strong>: payment-api publishes, payment-worker authorises and captures, ledger-service records.</li>
+          <li><strong>Retry topics and a circuit breaker</strong> around the external provider, so a slow provider doesn't stall the pipeline.</li>
+          <li><strong>Append-only ledger</strong> of every status change, with ShedLock for locking across instances.</li>
+        </ul>
+        <p class="tech">Kotlin · Spring Boot 4 · Kafka · MySQL · Liquibase · Resilience4j</p>
+        <div class="links">
+          <a class="link" href="https://github.com/imkulwant/payment-system" target="_blank" rel="noopener">View on GitHub<svg class="i"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
-    </section>
+      <figure class="visual">
+        <svg class="dg" viewBox="0 0 352 328" role="img" aria-labelledby="pay-t pay-d">
+          <title id="pay-t">payment-system architecture</title>
+          <desc id="pay-d">A client posts a payment to payment-api, which publishes it to Kafka. payment-worker consumes it, authorises and captures it with the provider through a circuit breaker, and publishes status updates back to Kafka. ledger-service consumes both topics and keeps an append-only log.</desc>
+          <defs>
+            <marker id="pay-arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path class="head" d="M0 0 8 4 0 8z"/></marker>
+          </defs>
+          <path class="edge" d="M115 56V94" marker-end="url(#pay-arrow)"/>
+          <path class="edge" d="M115 144V182" marker-end="url(#pay-arrow)"/>
+          <path class="edge" d="M115 232V270" marker-end="url(#pay-arrow)"/>
+          <path class="edge" d="M190 208H220" marker-end="url(#pay-arrow)"/>
+          <path class="edge" d="M190 296H220" marker-end="url(#pay-arrow)"/>
+          <path class="edge dash" d="M40 304H20V200H38" marker-end="url(#pay-arrow)"/>
+          <text class="lbl" x="124" y="167">PaymentCreated</text>
+          <text class="lbl mid" transform="translate(13 252) rotate(-90)">status</text>
+          <g class="node"><rect x="40" y="8" width="150" height="48" rx="8"/><text class="t" x="115" y="29">Client</text><text class="s" x="115" y="45">POST /payments</text></g>
+          <g class="node"><rect x="40" y="96" width="150" height="48" rx="8"/><text class="t" x="115" y="117">payment-api</text><text class="s" x="115" y="133">Idempotency-Key</text></g>
+          <g class="node accent"><rect x="40" y="184" width="150" height="48" rx="8"/><text class="t" x="115" y="205">Kafka</text><text class="s" x="115" y="221">payments · status</text></g>
+          <g class="node"><rect x="40" y="272" width="150" height="48" rx="8"/><text class="t" x="115" y="293">payment-worker</text><text class="s" x="115" y="309">authorise → capture</text></g>
+          <g class="node"><rect x="222" y="184" width="124" height="48" rx="8"/><text class="t" x="284" y="205">ledger-service</text><text class="s" x="284" y="221">append-only log</text></g>
+          <g class="node"><rect x="222" y="272" width="124" height="48" rx="8"/><text class="t" x="284" y="293">Provider</text><text class="s" x="284" y="309">circuit breaker</text></g>
+        </svg>
+        <figcaption>payment-worker publishes status back to Kafka; ledger-service reads both topics.</figcaption>
+      </figure>
+    </article>
 
-    <!-- AI / LLM -->
-    <section id="exploring" class="section">
-      <div class="section-head">
-        <h2><span class="blue">Currently</span> Exploring</h2>
-        <p>Where I'm heading next, alongside backend work</p>
-      </div>
-      <div class="card featured explore-card">
-        <div class="card-head">
-          <div class="card-top">
-            <svg class="icon" data-icon="cpu" width="20" height="20"></svg>
-            <span class="tag solid">In progress</span>
-          </div>
-          <h3>AI / LLM Engineering</h3>
-        </div>
-        <div class="card-body">
-          <p>A self-directed path into AI and LLM engineering: learning model fundamentals hands-on, building agent tooling, and bringing the reliability habits of distributed backend systems to LLM-powered applications. Projects will appear here as they ship.</p>
-        </div>
-        <div class="chips-row">
-          <span class="chip">PyTorch</span>
-          <span class="chip">LLM agents</span>
-          <span class="chip">Prompt engineering</span>
-          <span class="chip">Python</span>
+    <article class="case flip">
+      <div>
+        <p class="kicker">Edge gateway</p>
+        <h3>api-gateway</h3>
+        <p class="lede">The front door for backend services: every request is rate-limited, protected by a circuit breaker and traced end to end.</p>
+        <ul class="points">
+          <li><strong>Rate limiting in Redis</strong>, keyed by client IP, shared across gateway instances.</li>
+          <li><strong>Resilience4j circuit breaker</strong> with a fallback route when a backend is failing.</li>
+          <li><strong>Distributed tracing</strong> with Micrometer and OpenTelemetry, exported to Zipkin.</li>
+          <li><strong>Health probes and OpenAPI</strong> through Actuator and Swagger UI.</li>
+        </ul>
+        <p class="tech">Java 21 · Spring Cloud Gateway · WebFlux · Redis · OpenTelemetry</p>
+        <div class="links">
+          <a class="link" href="https://github.com/imkulwant/api-gateway" target="_blank" rel="noopener">View on GitHub<svg class="i"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
-    </section>
+      <figure class="visual">
+        <svg class="dg" viewBox="0 0 352 336" role="img" aria-labelledby="gw-t gw-d">
+          <title id="gw-t">api-gateway request path</title>
+          <desc id="gw-d">Each request passes a Redis-backed rate limiter keyed by client IP, then a Resilience4j circuit breaker with a fallback route, and is routed to service1 or service2. The whole path is traced with OpenTelemetry and exported to Zipkin.</desc>
+          <defs>
+            <marker id="gw-arrow" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path class="head" d="M0 0 8 4 0 8z"/></marker>
+          </defs>
+          <rect class="frame" x="24" y="68" width="288" height="196" rx="12"/>
+          <text class="lbl strong" x="40" y="88">api-gateway</text>
+          <path class="edge" d="M168 48V98" marker-end="url(#gw-arrow)"/>
+          <path class="edge" d="M168 144V154" marker-end="url(#gw-arrow)"/>
+          <path class="edge" d="M168 200V210" marker-end="url(#gw-arrow)"/>
+          <path class="edge" d="M104 256V286" marker-end="url(#gw-arrow)"/>
+          <path class="edge" d="M240 256V286" marker-end="url(#gw-arrow)"/>
+          <path class="edge dash" d="M322 20H330V316H322"/>
+          <text class="lbl mid" transform="translate(343 168) rotate(90)">traced · OpenTelemetry → Zipkin</text>
+          <g class="node"><rect x="88" y="8" width="160" height="40" rx="8"/><text class="t" x="168" y="32">Client</text></g>
+          <g class="node accent"><rect x="48" y="100" width="240" height="44" rx="8"/><text class="t" x="168" y="119">Rate limiter</text><text class="s" x="168" y="135">Redis · per client IP</text></g>
+          <g class="node"><rect x="48" y="156" width="240" height="44" rx="8"/><text class="t" x="168" y="175">Circuit breaker</text><text class="s" x="168" y="191">Resilience4j · fallback</text></g>
+          <g class="node"><rect x="48" y="212" width="240" height="44" rx="8"/><text class="t" x="168" y="231">Routes</text><text class="s" x="168" y="247">/service1 · /service2</text></g>
+          <g class="node"><rect x="40" y="288" width="128" height="40" rx="8"/><text class="t" x="104" y="312">service1</text></g>
+          <g class="node"><rect x="176" y="288" width="128" height="40" rx="8"/><text class="t" x="240" y="312">service2</text></g>
+        </svg>
+        <figcaption>Every request takes the same path through the gateway.</figcaption>
+      </figure>
+    </article>
 
-    <!-- Repositories (loaded live from the GitHub API) -->
-    <section id="repositories" class="section">
-      <div class="section-head">
-        <h2><span class="blue">Public</span> Repositories</h2>
-        <p>Pulled live from GitHub</p>
+    <article class="case">
+      <div>
+        <p class="kicker">Shipped product <span class="live">Live</span></p>
+        <h3>workout-tracker-pwa</h3>
+        <p class="lede">An offline-first workout logger for iPhone. No server and no account: everything stays on the device.</p>
+        <ul class="points">
+          <li><strong>React, TypeScript and IndexedDB</strong> (Dexie), installed from Safari as a home-screen app.</li>
+          <li><strong>Layered architecture</strong> enforced by ESLint: only repositories touch the database.</li>
+          <li><strong>End-to-end tests in iPhone WebKit</strong> with Playwright, including screenshot tests of the stats screens.</li>
+          <li><strong>CI on every push</strong>: lint, type check, tests and a bundle size check, then deploy to GitHub Pages.</li>
+        </ul>
+        <p class="tech">React · TypeScript · Vite · Dexie · Tailwind · Playwright</p>
+        <div class="links">
+          <a class="link" href="https://imkulwant.github.io/workout-tracker-pwa/" target="_blank" rel="noopener">Open the app<svg class="i"><use href="#i-arrow"/></svg></a>
+          <a class="link" href="https://github.com/imkulwant/workout-tracker-pwa" target="_blank" rel="noopener">View on GitHub<svg class="i"><use href="#i-arrow"/></svg></a>
+        </div>
       </div>
-      <div class="filter-wrap"><div class="filter" id="repo-filter" hidden></div></div>
-      <div class="repo-grid" id="repo-grid">
-        <div class="repo-status">Loading repositories…</div>
-      </div>
-    </section>
+      <figure class="visual">
+        <div class="phone">
+          <img src="data:image/webp;base64,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" width="480" height="813" alt="The app's Stats screen: this week's workouts, sets, volume and streak, above a training calendar heatmap." decoding="async">
+        </div>
+        <figcaption>Stats screen, with generated demo data.</figcaption>
+      </figure>
+    </article>
+  </section>
 
-  </div>
+  <section class="section wrap" aria-labelledby="more-h">
+    <div class="section-head">
+      <h2 id="more-h">More projects</h2>
+      <p>Smaller builds and experiments</p>
+    </div>
+    <ul class="list">
+      <li><a class="row" href="https://github.com/imkulwant/pi-chat" target="_blank" rel="noopener">
+        <span class="row-name">pi-chat</span>
+        <span class="row-desc">Fully local AI chat on a Raspberry Pi 5: Ollama, retrieval over your own documents, and voice input. Nothing leaves the LAN.</span>
+        <span class="row-tags"><span class="tag ai">AI</span><span class="tag">Python</span></span>
+        <svg class="i go"><use href="#i-arrow"/></svg>
+      </a></li>
+      <li><a class="row" href="https://github.com/imkulwant/ollama-chat" target="_blank" rel="noopener">
+        <span class="row-name">ollama-chat</span>
+        <span class="row-desc">Lightweight browser chat client for Ollama, with a small FastAPI proxy in front of the model server.</span>
+        <span class="row-tags"><span class="tag ai">AI</span><span class="tag">Python</span></span>
+        <svg class="i go"><use href="#i-arrow"/></svg>
+      </a></li>
+      <li><a class="row" href="https://github.com/imkulwant/crudify" target="_blank" rel="noopener">
+        <span class="row-name">crudify</span>
+        <span class="row-desc">Spring Boot starter that generates CRUD REST APIs from a single @CrudifyEntity annotation.</span>
+        <span class="row-tags"><span class="tag">Java</span><span class="tag">Library</span></span>
+        <svg class="i go"><use href="#i-arrow"/></svg>
+      </a></li>
+      <li><a class="row" href="https://github.com/imkulwant/url-shortener" target="_blank" rel="noopener">
+        <span class="row-name">url-shortener</span>
+        <span class="row-desc">Separate generation and redirection services sharing one core library for encryption, caching and data access.</span>
+        <span class="row-tags"><span class="tag">Kotlin</span><span class="tag">Redis</span></span>
+        <svg class="i go"><use href="#i-arrow"/></svg>
+      </a></li>
+      <li><a class="row" href="https://github.com/imkulwant/homelab-platform" target="_blank" rel="noopener">
+        <span class="row-name">homelab-platform</span>
+        <span class="row-desc">Self-hosted infrastructure on one machine: Nginx ingress, Prometheus, Grafana, Zipkin, MySQL and Redis.</span>
+        <span class="row-tags"><span class="tag">Docker</span><span class="tag">Infra</span></span>
+        <svg class="i go"><use href="#i-arrow"/></svg>
+      </a></li>
+    </ul>
+    <div class="links all">
+      <a class="link" href="https://github.com/imkulwant?tab=repositories" target="_blank" rel="noopener">All repositories on GitHub<svg class="i"><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact wrap" aria-labelledby="contact-h">
+    <div class="section-head">
+      <h2>Contact</h2>
+    </div>
+    <h2 id="contact-h" class="big">Let's talk.</h2>
+    <p>Email is the quickest way to reach me.</p>
+    <a class="email" href="mailto:singh.kulwant@gmx.com">singh.kulwant@gmx.com</a>
+    <div class="contact-links">
+      <a href="https://linkedin.com/in/imkulwant" target="_blank" rel="noopener"><svg class="i"><use href="#i-linkedin"/></svg>LinkedIn</a>
+      <a href="https://github.com/imkulwant" target="_blank" rel="noopener"><svg class="i"><use href="#i-github"/></svg>GitHub</a>
+      <a href="cv.pdf" target="_blank" rel="noopener"><svg class="i"><use href="#i-file"/></svg>CV (PDF)</a>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  <div class="container">
-    <p>© <span id="year">2026</span> Kulwant Singh. Built with HTML &amp; CSS · Hosted on GitHub Pages.</p>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Kulwant Singh</span>
+    <span>Stockholm, Sweden</span>
   </div>
 </footer>
 
 <script>
-  // ---------- Icons (Lucide, ISC licence) ----------
-  const ICONS = {
-    grid: '<rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>',
-    folder: '<path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/><circle cx="12" cy="13" r="2"/><path d="M14 13h3"/><path d="M7 13h3"/>',
-    file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
-    github: '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-5-2"/>',
-    external: '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
-    server: '<rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/>',
-    box: '<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 7.7 4.73a2 2 0 0 0 2 0L20.7 7"/>',
-    layers: '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>',
-    cpu: '<rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/>',
-    star: '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
-    fork: '<circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/>',
-    eye: '<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
-    info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>'
-  };
-  function icon(name, size) {
-    return '<svg class="icon" width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>';
-  }
-  function hydrateIcons(root) {
-    root.querySelectorAll('svg[data-icon]').forEach(function (el) {
-      el.setAttribute('viewBox', '0 0 24 24');
-      el.setAttribute('fill', 'none');
-      el.setAttribute('stroke', 'currentColor');
-      el.setAttribute('stroke-width', '2');
-      el.setAttribute('stroke-linecap', 'round');
-      el.setAttribute('stroke-linejoin', 'round');
-      el.setAttribute('aria-hidden', 'true');
-      el.innerHTML = ICONS[el.dataset.icon] || '';
-    });
-  }
-  hydrateIcons(document);
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ---------- Repositories ----------
-  const USER = 'imkulwant';
-  const SKIP = [USER.toLowerCase(), (USER + '.github.io').toLowerCase()];
-  const grid = document.getElementById('repo-grid');
-  const filter = document.getElementById('repo-filter');
-
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  // Theme toggle: an explicit choice is saved; until then the system setting decides.
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector('.theme');
+    var system = window.matchMedia('(prefers-color-scheme: dark)');
+    function current() { return root.dataset.theme || (system.matches ? 'dark' : 'light'); }
+    function label() {
+      button.setAttribute('aria-label', current() === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+    button.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      label();
     });
-  }
-  function cover(name) {
-    let h = 0;
-    for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360;
-    const hue = 198 + (h % 18); // stay in the blue family
-    return 'background: linear-gradient(135deg, hsl(' + hue + ' 95% 52%), hsl(' + (hue + 12) + ' 90% 38%));';
-  }
-  function updated(iso) {
-    return new Date(iso).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
-  }
-  function card(r) {
-    const tags = [r.language].concat((r.topics || []).slice(0, 2)).filter(Boolean);
-    return '<div class="card repo-card">' +
-      '<div class="repo-cover" style="' + cover(r.name) + '">' +
-        '<span class="cover-name">' + esc(r.name) + '</span>' +
-        '<div class="cover-bar"><span>' + esc(r.language || 'Code') + '</span><span>Updated ' + updated(r.pushed_at) + '</span></div>' +
-      '</div>' +
-      '<div>' +
-        '<div class="card-head"><h3>' + esc(r.name) + '</h3>' +
-          (tags.length ? '<div class="tags">' + tags.map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('') + '</div>' : '') +
-        '</div>' +
-        '<div class="card-body">' +
-          '<p>' + esc(r.description || 'No description yet.') + '</p>' +
-          '<a class="btn-details" href="' + esc(r.html_url) + '#readme" target="_blank" rel="noopener">' + icon('info', 16) + 'View Details</a>' +
-        '</div>' +
-      '</div>' +
-      '<div class="repo-foot">' +
-        '<div class="repo-stats"><span>' + icon('star', 16) + r.stargazers_count + '</span><span>' + icon('fork', 16) + r.forks_count + '</span></div>' +
-        '<a class="repo-view" href="' + esc(r.html_url) + '" target="_blank" rel="noopener">' + icon('eye', 16) + '<span>View</span></a>' +
-      '</div>' +
-    '</div>';
-  }
-  function render(repos, lang) {
-    const list = lang === 'All' ? repos : repos.filter(function (r) { return r.language === lang; });
-    grid.innerHTML = list.map(card).join('');
-  }
-  function fail() {
-    grid.innerHTML = '<div class="repo-status">Couldn\'t load repositories right now. <a href="https://github.com/' + USER + '?tab=repositories" target="_blank" rel="noopener">Browse them on GitHub →</a></div>';
-  }
-
-  fetch('https://api.github.com/users/' + USER + '/repos?per_page=100&sort=pushed', { headers: { Accept: 'application/vnd.github+json' } })
-    .then(function (res) { if (!res.ok) throw new Error(res.status); return res.json(); })
-    .then(function (data) {
-      const repos = data
-        .filter(function (r) { return !r.fork && !r.archived && SKIP.indexOf(r.name.toLowerCase()) === -1; })
-        .sort(function (a, b) { return b.stargazers_count - a.stargazers_count || new Date(b.pushed_at) - new Date(a.pushed_at); });
-      if (!repos.length) return fail();
-
-      const counts = {};
-      repos.forEach(function (r) { if (r.language) counts[r.language] = (counts[r.language] || 0) + 1; });
-      const langs = ['All'].concat(Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).slice(0, 4));
-      filter.innerHTML = langs.map(function (l, i) {
-        return '<button type="button" data-lang="' + esc(l) + '"' + (i === 0 ? ' class="active"' : '') + '>' + esc(l) + '</button>';
-      }).join('');
-      filter.hidden = false;
-      filter.addEventListener('click', function (e) {
-        const b = e.target.closest('button');
-        if (!b) return;
-        filter.querySelectorAll('button').forEach(function (x) { x.classList.toggle('active', x === b); });
-        render(repos, b.dataset.lang);
-      });
-      render(repos, 'All');
-    })
-    .catch(fail);
+    system.addEventListener('change', label);
+    label();
+  })();
 </script>
 </body>
 </html>
